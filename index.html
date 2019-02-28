@@ -152,9 +152,9 @@
     }
 
     .avatar-container{
-      margin-top: 10%;
+      margin-top: 5%;
       position: relative;
-      width: 100%;
+      width: 60%;
     }
 
     .avatar {
@@ -247,6 +247,7 @@
     }
 
     .jumbotron {
+      margin-bottom: 0px;
       background-color: #223052;
       background-image: url("https://github.com/senel34/node-test-deploy/blob/master/bg.jpg?raw=true");
       background-size: cover;
@@ -303,7 +304,11 @@
     }
 
     .main-content{
+      padding-left: 50px;
+      background-color: gold;
       padding-bottom: 40px;
+      width: 100%;
+      margin: 0px;
     }
 
     .post-container {
@@ -323,13 +328,15 @@
     }
 
     .main-heading{
+      font-family: 'Raleway', serif !important;
       padding: 20px;
       padding-top: 40px;
       background-color: #223052;
-      color: #FFFFFF !important;
-      padding-left: 5%;
+      color: gold !important;
       font-family: inherit;
       margin: 0px;
+      font-weight: bold;
+      text-align: center;
     }
 
     .post-block {
@@ -546,12 +553,6 @@
                    <li>Java</li>
                    <li>Flask</li>
                 </ul>
-                <p className='profile-text'>Quite familiar with the basics of: </p>
-                <ul className='profile-text'>
-                   <li>Node.js</li>
-                   <li>React.js</li>
-                   <li>Flask</li>
-                </ul>
               </div>
               <div className="col-xs-4 col-sm-4">
                 <br/>
@@ -561,7 +562,7 @@
               </div>
             </div>
           </div>
-            <h1 className="main-heading">Latest Post:</h1>
+            <h1 className="main-heading">Latest Post</h1>
             <div>
               <Post fetchTop={true}/>
             </div>
