@@ -282,12 +282,21 @@
       height: 500px;
       overflow: hidden;
     }
+
+    .post-wrapper{
+    	background-color: gold;
+    }
+
     .fetched-post {
       display: block;
-      overflow: hidden;      
+      overflow: hidden;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 20px;
+      background-color: white;      
     }
     .post-title {
-      font-family: 'Lobster Two', serif;
+      font-family: 'Raleway', serif;
       text-align: center;
     }
     .main-heading{
@@ -421,7 +430,7 @@
         if(this.state.posts !== null){
           let fetchTop = this.props.fetchTop;
           return(
-            <div>
+            <div className="post-wrapper">
              {this.state.posts.map(function(post){
                 var mdConverter = new showdown.Converter(),
                 postText=post.body,
