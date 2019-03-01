@@ -61,12 +61,10 @@
       color: #000;
       background-color: #0099FF;
     }
-
     .navbar{
       margin-bottom: 0px;
       border-radius: 0px;
     }
-
     .navbar-bg{
         background-color:#223052;
         border-bottom: 8px solid #1e2b49;
@@ -76,12 +74,10 @@
       color:white;
       font-family: 'Raleway', serif;
     }
-
     .navbar-brand{
       text-decoration: none !important;
       color:white;
     }
-
     .navbar-toggle .icon-bar{ 
       background-color: #FFFFFF;
     }
@@ -91,7 +87,6 @@
       text-decoration: none;
       background-color: #f9c414;
     }
-
     .navbar-nav {
         display: flex;
         flex-direction: row;
@@ -99,7 +94,6 @@
         margin-bottom: 0;
         list-style: none;
     }
-
     #menu-items.show > #menu-bar{
       position: fixed;   
       z-index: 11;
@@ -107,17 +101,14 @@
       border-bottom-left-radius:2%;
       border-bottom-right-radius:2%;
     }
-
     #menu-items.show > ul {
       background-color:rgba(35, 48, 83, 0.95);
       width: 100%;
     }
-
     #menu-items.show > ul > li > a {
       display: block;
       text-align:center;
     }
-
     /* The sticky class is added to the navbar with JS when it reaches its scroll position */
     .sticky {
       position: sticky;
@@ -135,28 +126,24 @@
       outline-width: 0;
       background-color: #FFFFFF;
     }
-
     #site-brand:hover{
       color:white !important;
     }
-
     .profile-title {
       font-family: 'Raleway', serif;
       font-weight: Bold;
       border-left: 2px solid;
       padding-left: 5px;
     }
-
     .profile-text {
         font-family: 'Merriweather', serif;
     }
-
     .avatar-container{
       margin-top: 5%;
       position: relative;
-      width: 60%;
+      width: 40%;
+      min-width: 90px;
     }
-
     .avatar {
       display:block;
       padding-top:100%;
@@ -166,7 +153,6 @@
       background-image: url(https://github.com/senel34/node-test-deploy/blob/master/pp.jpg?raw=true);
       background-size: 100%;
     }
-
     .sidenav {
         height: 100%; /* 100% Full-height */
         width: 0; /* 0 width - change this with JavaScript */
@@ -180,7 +166,6 @@
         transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
         opacity: 0.95;
     }
-
     .sidenav .closebtn {
         position: absolute;
         top: 0;
@@ -188,11 +173,9 @@
         font-size: 36px;
         margin-left: 50px;
     }
-
     .footer-info {
       background-color: #F5F5F5;
     }
-
     .action-button {
       position: fixed;
       top: 44.9vw;
@@ -217,27 +200,22 @@
       z-index: 8;
       transition: 0.3s;
     }
-
     .share-button{
       background-image: url('https://cbwconline.com/IMG/Share.svg');
       background-size: contain;      
     }
-
     .twitter-button{
       background-image: url('https://cbwconline.com/IMG/Twitter-Flat.png');
       background-size: contain;
     }
-
     .facebook-button{
       background-image: url('https://cbwconline.com/IMG/Facebook-Flat.png');
       background-size: contain;
     }
-
     .google-button{
       background-image: url('https://cbwconline.com/IMG/Google%20Plus.svg');
       background-size: contain;
     }
-
     .action-button-top{
       position: fixed;
       height: 15vw;
@@ -245,7 +223,6 @@
       top: 33vw;
       left: 1.5vw;
     }
-
     .jumbotron {
       margin-bottom: 0px;
       background-color: #223052;
@@ -254,24 +231,20 @@
       color: #fff;
       text-align: center;
     }
-
     .jumbotron p{
       display: inline-block;
       text-align: center;
     }
-
     .jumbotron a{
       display: inline-block;
       text-align: center;
       margin-left: 5px;
     }
-
     .loader-container{
       position: absolute;
       width: 100%;
       height: 100%;
     }
-
     .loader{
       position: absolute;
       left:50%;
@@ -283,26 +256,20 @@
       height:50px;
       animation: spin 1s linear infinite;
     }
-
     @keyframes spin {
       0%{ transform: rotate(0deg);}
       100%{ transform: rotate(360deg);}
     }
-
     .main-text{
       display: inline-block;
       color:#ffffff !important;
     }
-
     .second-text{
-
     }
-
     .third-text{
       display: inline-block;
       color:#f9c414 !important;
     }
-
     .main-content{
       padding-left: 50px;
       background-color: gold;
@@ -310,23 +277,19 @@
       width: 100%;
       margin: 0px;
     }
-
     .post-container {
       display: block;
       height: 500px;
       overflow: hidden;
     }
-
     .fetched-post {
       display: block;
       overflow: hidden;      
     }
-
     .post-title {
       font-family: 'Lobster Two', serif;
       text-align: center;
     }
-
     .main-heading{
       font-family: 'Raleway', serif !important;
       padding: 20px;
@@ -338,8 +301,78 @@
       font-weight: bold;
       text-align: center;
     }
-
     .post-block {
+      padding-bottom: 20px;
+    }
+
+    .post-anim{
+      animation: slideIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+
+    @keyframes slideIn{
+      from{
+        opacity: 0;
+        transform: translate3d(-20rem, 0, 500rem);
+      }
+      to{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+      }
+    }
+
+    @keyframes bounce {
+      0%,
+      100%,
+      20%,
+      50%,
+      80% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+      }
+      40% {
+        -webkit-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+      }
+      60% {
+        -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+      }
+    }
+
+    .scroll-arrow{
+      position: inherit;
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 4px solid gold;
+      border-width: 0px 0px 4px 4px;
+      transform: rotate(-45deg);
+      margin: auto;
+    }
+
+    .scroll-arrow:after{
+      content: "";
+      position: fixed;
+      display: block;
+      bottom: 5px;
+      left: 5px;
+      width: 20px;
+      height: 20px;
+      border: 4px solid gold;
+      border-width: 0px 0px 4px 4px;
+    }
+
+    .bounce-wrapper{
+      animation: bounce 4s infinite 2s;
+    }
+
+    .arrow-wrapper{
+      text-align:center;
+      margin: auto;
+      background-color: #223052;
       padding-bottom: 20px;
     }
 
@@ -358,7 +391,6 @@
       BrowserRouter,
       NavLink
     } = ReactRouterDOM
-
     class Post extends React.Component{
       constructor(props){
         super(props);
@@ -385,7 +417,6 @@
           });
         });
       }
-
       render(){
         if(this.state.posts !== null){
           let fetchTop = this.props.fetchTop;
@@ -398,13 +429,11 @@
                 htmlObj={
                   __html:postHTML
                 };
-                console.log(fetchTop);
                 return(
-                  <div className="container post-block" key={post.id}>
+                  <div className="post-anim container post-block" key={post.id}>
                     <div className="row">
                       <div className="col-xs-0 col-sm-0"></div>
                       <div className="col-xs-12 col-sm-12">
-
                       {/* Dirty but will do for now */}
                         {fetchTop ?
                           <div className="fetched-post" id={post.id}>
@@ -446,9 +475,7 @@
         }
       }
     }
-
     class Header extends React.Component {
-
       constructor(props){
         super(props);
         this.toggleNavbar = this.toggleNavbar.bind(this);
@@ -457,27 +484,21 @@
           collapsed: true
         };
       }
-
       resetNavBar(){
         document.getElementById('root').focus();
         this.setState({
           collapsed: true
         });
       }
-
       toggleNavbar(){
         this.setState({
           collapsed: !this.state.collapsed
         });
       }
-
       render(){
-
         const collapsed = this.state.collapsed;
         const menuClass = collapsed ? "navbar-collapse collapse" : "navbar-collapse collapse show";
-
         return(
-
           <nav className="navbar navbar-dark navbar-bg" id="navigationbar" role="navigation">
               <div className="container">
                   <div className="navbar-header">
@@ -503,8 +524,6 @@
         );
       };
     }
-
-
     class Blog extends React.Component{
       componentDidMount(){
         document.getElementById('root').focus();
@@ -517,7 +536,6 @@
         );
       }
     }
-
     class ProfileHeader extends React.Component {
       render(){
         return(
@@ -529,7 +547,6 @@
         );        
       }
     }
-
     class Home extends React.Component {
       componentDidMount(){
         document.getElementById('root').focus();
@@ -563,6 +580,11 @@
             </div>
           </div>
             <h1 className="main-heading">Latest Post</h1>
+            <div className="arrow-wrapper">
+              <div className="bounce-wrapper">
+                <div className="scroll-arrow"></div>
+              </div>
+            </div>
             <div>
               <Post fetchTop={true}/>
             </div>
@@ -571,9 +593,6 @@
         );
       }
     }
-
-
-
     class Skills extends React.Component {
       componentDidMount(){
         document.getElementById('root').focus();
@@ -586,7 +605,6 @@
         ); 
       }
     }
-
     class Interests extends React.Component {
       
       componentDidMount(){
@@ -601,10 +619,7 @@
         ); 
       }
     }
-
-
     class Footer extends React.Component {
-
       render() {
         return(
           <footer className='footer-info'>
@@ -613,13 +628,11 @@
         );
       }
     }
-
     class Main extends React.Component {
       constructor(props){
         super(props);
       }
       componentDidMount(){
-
       }
       render(){
         return(
@@ -632,7 +645,6 @@
         );
       }
     }
-
     class App extends React.Component {
       constructor(props){
         super(props);
@@ -655,8 +667,6 @@
         );
       }
     }
-
-
     ReactDOM.render(
       (
         <HashRouter>
@@ -664,7 +674,6 @@
         </HashRouter>
       ), document.getElementById('root')
     );
-
     
     // JS Scroll part
     window.onscroll = () => {
@@ -679,12 +688,10 @@
         navbar.classList.remove("sticky");
       }
     };
-
     /* Open the sidenav */
     function openNav() {
         document.getElementById("mySidenav").style.width = "100%";
     }
-
     /* Close/hide the sidenav */
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
@@ -695,14 +702,11 @@
       document.getElementById("child2").style.top = "37vw";
       document.getElementById("child3").style.top = "33vw";
     }
-
     function deflateDong(){
       document.getElementById("child1").style.top = "45vw";
       document.getElementById("child2").style.top = "45vw";
       document.getElementById("child3").style.top = "45vw";      
     }
-
-
   </script>
 </body>
 </html>
