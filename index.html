@@ -34,6 +34,10 @@
       display: block;
       height: 50px;
     }
+	html, body {
+	    max-width: 100%;
+	    overflow-x: hidden;
+	}
     ul.header li {
       display: inline;
       list-style-type: none;
@@ -48,7 +52,7 @@
       display: inline-block;
     }
     .content {
-      background-color: #FFF;
+      background-color: #223052;
     }
     .content h2 {
       padding: 0;
@@ -124,7 +128,7 @@
     /*to remove the blue border when the div is focused on*/
     #root{
       outline-width: 0;
-      background-color: #FFFFFF;
+      background-color: #223052;
     }
     #site-brand:hover{
       color:white !important;
@@ -273,7 +277,8 @@
     .main-content{
       padding-left: 50px;
       background-color: gold;
-      padding-bottom: 40px;
+      padding-bottom: 50px;
+      padding-right: 0px;
       width: 100%;
       margin: 0px;
     }
@@ -300,6 +305,9 @@
       text-align: center;
     }
     .main-heading{
+
+	  border-bottom-left-radius: 50% 20%;
+	  border-bottom-right-radius: 50% 20%;
       font-family: 'Raleway', serif !important;
       padding: 20px;
       padding-top: 40px;
@@ -310,12 +318,13 @@
       font-weight: bold;
       text-align: center;
     }
+
     .post-block {
       padding-bottom: 20px;
     }
 
     .post-anim{
-      animation: slideIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+      animation: slideIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     }
 
     @keyframes slideIn{
@@ -384,6 +393,41 @@
       background-color: #223052;
       padding-bottom: 20px;
     }
+    
+    .triangle-container{
+      position: relative;
+    }
+    .triangle-triangle-container{
+      position: absolute;
+	  bottom: 23px;
+    }
+
+	.triangle {
+	  display: inline;
+	  width: 0; 
+	  height: 0;
+	  bottom: 0;
+	  border-left: 25px solid transparent;
+	  border-right: 25px solid transparent;
+	  border-bottom: 25px solid #223052;
+	}
+
+	#triangle1{
+		right: 0px;
+	}
+
+	#triangle2{
+		right: 50px;
+	}
+
+	#triangle3{
+		right: 100px;
+	}
+
+	#triangle4{
+		right: 150px;
+	}
+
 
   </style>
 </head>
@@ -548,11 +592,13 @@
     class ProfileHeader extends React.Component {
       render(){
         return(
+        	<div>
           <div className='jumbotron'>
             <h1 className='main-text'>Test</h1> <h1 className='third-text'>Jumbotron</h1><br></br>
             <p> Using bootstrap jumbotron</p>
             <a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>
           </div>
+			</div>
         );        
       }
     }
@@ -588,6 +634,50 @@
               </div>
             </div>
           </div>
+            <div className="triangle-container">
+            	<div className="triangle-triangle-container">
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+	            	<div className="triangle"></div>
+            	</div>
+            </div>
             <h1 className="main-heading">Latest Post</h1>
             <div className="arrow-wrapper">
               <div className="bounce-wrapper">
@@ -602,6 +692,7 @@
         );
       }
     }
+
     class Skills extends React.Component {
       componentDidMount(){
         document.getElementById('root').focus();
