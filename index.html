@@ -230,7 +230,7 @@
     .jumbotron {
       margin-bottom: 0px;
       background-color: #223052;
-      background-image: url("https://github.com/senel34/node-test-deploy/blob/master/bg.jpg?raw=true");
+      /*background-image: url("https://github.com/senel34/node-test-deploy/blob/master/bg.jpg?raw=true");*/
       background-size: cover;
       color: #fff;
       text-align: center;
@@ -290,17 +290,41 @@
 
     .post-wrapper{
     	background-color: gold;
+    	padding-bottom: 20px;
     }
 
     .fetched-post {
       display: block;
       overflow: hidden;
       padding: 15px;
+      padding-top: 50px;
       margin-top: 20px;
       border-radius: 20px;
       background-color: white;
       box-shadow: 5px 5px 5px grey;  
     }
+
+    .post-paragraph {
+    	height: 280px;
+    	overflow: hidden;
+    }
+
+    .post-thumbnails {
+		display: inline-block;
+		overflow: hidden;
+		padding: 15px;
+		margin-top: 20px;
+		margin-right: 5px;
+		margin-left: 5px;
+		border-radius: 20px;
+		background-color: white;
+		box-shadow: 5px 5px 5px grey;  
+    	width: 25%;
+    	height: 400px;
+    }
+
+
+
     .post-title {
       font-family: 'Raleway', serif;
       text-align: center;
@@ -318,10 +342,6 @@
       margin: 0px;
       font-weight: bold;
       text-align: center;
-    }
-
-    .post-block {
-      padding-bottom: 20px;
     }
 
     .post-anim{
@@ -392,7 +412,7 @@
       text-align:center;
       margin: auto;
       background-color: #223052;
-      padding-bottom: 20px;
+      padding-bottom: 40px;
     }
     
     .triangle-container{
@@ -413,22 +433,20 @@
 	  border-bottom: 25px solid #223052;
 	}
 
-	#triangle1{
-		right: 0px;
+	.triangle-gold {
+	  display: inline;
+	  width: 0; 
+	  height: 0;
+	  bottom: 0;
+	  border-left: 25px solid transparent;
+	  border-right: 25px solid transparent;
+	  border-bottom: 25px solid gold;
 	}
 
-	#triangle2{
-		right: 50px;
+	.copyright-text{
+		text-align:center;
+		color:#FFFFFF;
 	}
-
-	#triangle3{
-		right: 100px;
-	}
-
-	#triangle4{
-		right: 150px;
-	}
-
 
   </style>
 </head>
@@ -445,6 +463,114 @@
       BrowserRouter,
       NavLink
     } = ReactRouterDOM
+
+    class TriangleRow extends React.Component{
+    	render(){
+    		return(
+	            <div className="triangle-container">
+	            	<div className="triangle-triangle-container">
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+		            	<div className="triangle-gold"></div>
+	            	</div>
+	            </div>
+    		);
+    	}
+    }
+
+    class PostThumbs extends React.Component{
+      constructor(props){
+        super(props);
+        this.state = {
+          posts: null
+        };
+      }
+      
+      componentDidMount(){
+        let apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=5';
+        fetch(apiURL)
+          .then((response) => {
+          return response.json();
+          })
+          .then((data) => {
+          this.setState({
+           posts: data   
+          });
+        });
+      }
+      render(){
+        if(this.state.posts !== null){
+          let fetchTop = this.props.fetchTop;
+          return(
+          <div className="post-wrapper">
+  			<div className="post-anim container">
+                <div className="row">
+                    <div className="col-xs-12 col-sm-12">
+						 {this.state.posts.map(function(post){
+						    var mdConverter = new showdown.Converter(),
+						    postText=post.body,
+						    postHTML=mdConverter.makeHtml(postText),
+						    htmlObj={
+						      __html:postHTML
+						    };
+						    return(
+						      	<div className="post-thumbnails post-anim" id={post.id} key={post.id}>
+						            <h1 className="post-title">{post.title}</h1>
+						            <div className="post-paragraph" dangerouslySetInnerHTML={htmlObj}></div>
+						      		<a href={'https://jpoblog.herokuapp.com/post/' + post.slug} target="_blank">Show More</a>
+						        </div>             
+						    );
+						  })} 
+			        </div>
+                </div>
+            </div>
+            </div>
+          );       
+        }
+        else{
+          return(
+            <div className='loader-container'>
+             <div className='loader'></div>
+            </div>
+          ); 
+        }
+      }
+    }
+
     class Post extends React.Component{
       constructor(props){
         super(props);
@@ -457,7 +583,7 @@
         let apiURL;
         
         if(this.props.fetchTop){
-          apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=1'
+          apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=5'
         } else{
           apiURL = 'https://jpoblog.herokuapp.com/posts?type=json'
         }
@@ -476,6 +602,7 @@
           let fetchTop = this.props.fetchTop;
           return(
             <div className="post-wrapper">
+            	<TriangleRow/>
              {this.state.posts.map(function(post){
                 var mdConverter = new showdown.Converter(),
                 postText=post.body,
@@ -484,7 +611,7 @@
                   __html:postHTML
                 };
                 return(
-                  <div className="post-anim container post-block" key={post.id}>
+                  <div className="post-anim container" key={post.id}>
                     <div className="row">
                       <div className="col-xs-0 col-sm-0"></div>
                       <div className="col-xs-12 col-sm-12">
@@ -529,6 +656,7 @@
         }
       }
     }
+
     class Header extends React.Component {
       constructor(props){
         super(props);
@@ -679,16 +807,18 @@
 	            	<div className="triangle"></div>
             	</div>
             </div>
-            <h1 className="main-heading">Latest Post</h1>
+            <h1 className="main-heading">Latest Posts</h1>
             <div className="arrow-wrapper">
               <div className="bounce-wrapper">
                 <div className="scroll-arrow"></div>
               </div>
             </div>
-            <div>
-              <Post fetchTop={true}/>
+            <PostThumbs/>
+            {/*<Post fetchTop={true}/>*/}
+            <div className="footer">
+            	<div className="copyright-text">
+            	</div>
             </div>
-            <div className="footer"></div>
         </div>
         );
       }
