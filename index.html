@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <!-- REACT LIBRARY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
   <!-- REACT DOM LIBRARY -->
@@ -34,10 +36,10 @@
       display: block;
       height: 50px;
     }
-	html, body {
-	    max-width: 100%;
-	    overflow-x: hidden;
-	}
+  	html, body {
+  	    max-width: 100%;
+  	    overflow-x: hidden;
+  	}
     ul.header li {
       display: inline;
       list-style-type: none;
@@ -190,7 +192,7 @@
       border: 0px;
       border-radius: 50%;
       z-index: 9;
-      transition: 0.3s;
+      transition: 0.2s;
     }
     .action-button-child {
       position: fixed;
@@ -310,17 +312,18 @@
     }
 
     .post-thumbnails {
-		display: inline-block;
-		overflow: hidden;
-		padding: 15px;
-		margin-top: 20px;
-		margin-right: 5px;
-		margin-left: 5px;
-		border-radius: 20px;
-		background-color: white;
-		box-shadow: 5px 5px 5px grey;  
+  		display: inline-block;
+  		overflow: hidden;
+  		padding: 15px;
+  		margin-top: 20px;
+  		margin-right: 5px;
+  		margin-left: 5px;
+  		border-radius: 20px;
+  		background-color: white;
+  		box-shadow: 5px 5px 5px grey;  
     	width: 25%;
     	height: 400px;
+      transition: width 0.2s;
     }
 
 
@@ -453,6 +456,7 @@
 <body>
 
   <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
+
   <script type="text/babel">
       const {
       HashRouter,
@@ -521,7 +525,7 @@
       }
       
       componentDidMount(){
-        let apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=5';
+        let apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=4';
         fetch(apiURL)
           .then((response) => {
           return response.json();
@@ -938,6 +942,32 @@
       document.getElementById("child2").style.top = "45vw";
       document.getElementById("child3").style.top = "45vw";      
     }
+
+    let resizeId;
+
+    function resizePostThumbs(){
+      if($(window).width() < 750 ){
+        $(".post-thumbnails").css("width","100%");
+        $(".post-thumbnails").css("display","block");
+      }
+      else{
+        $(".post-thumbnails").css("width","25%");
+        $(".post-thumbnails").css("display","inline-block");
+      }
+    }
+
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeId);
+        resizeId = setTimeout(doneResizing, 100);
+    });
+
+    function doneResizing(){
+        resizePostThumbs();
+    }
+
+    $(window).ready(resizePostThumbs);
+
   </script>
+
 </body>
 </html>
