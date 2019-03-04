@@ -246,11 +246,17 @@
       text-align: center;
       margin-left: 5px;
     }
+
+    .loader-container-thumbnail{
+      position: relative;      
+    }
+
     .loader-container{
       position: absolute;
       width: 100%;
       height: 100%;
     }
+
     .loader{
       position: absolute;
       left:50%;
@@ -457,6 +463,51 @@
 
   <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
 
+  <script text="text/javascript">
+    let resizeId;
+
+    function resizePostThumbs(){
+      /*change the post thumbnail layout on screen width change*/
+      if($(window).width() < 750 ){
+        $(".post-thumbnails").css("width","100%");
+        $(".post-thumbnails").css("display","block");
+      }
+      else{
+        $(".post-thumbnails").css("width","25%");
+        $(".post-thumbnails").css("display","inline-block");
+      }
+    }
+
+    window.addEventListener('resize', function() {
+        /*add timeout on resize before resizing other elements*/
+        clearTimeout(resizeId);
+        resizeId = setTimeout(doneResizing, 100);
+    });
+
+    function doneResizing(){
+        /*call the function to resize after a few seconds*/
+        resizePostThumbs();
+    }
+
+    $(window).ready(resizePostThumbs);
+
+    function expandPost(containerId, postId){
+      /* expands and hides the post thumbnail*/
+      if($("#" + postId).height() <= 280){
+        $("#" + containerId).css("width","100%");
+        $("#" + containerId).css("height","100%");
+        $("#" + postId).css("height","100%");
+        $("#" + containerId).focus();
+        $("#" + postId).focus();
+      } else{
+        $("#" + containerId).css("width","25%");
+        $("#" + containerId).css("height","400px");
+        $("#" + postId).css("height","280px");      
+      }
+    }
+
+  </script>
+
   <script type="text/babel">
       const {
       HashRouter,
@@ -517,6 +568,8 @@
     }
 
     class PostThumbs extends React.Component{
+      /* Post thumbnail component, displays previews of posts that are expandable
+      */
       constructor(props){
         super(props);
         this.state = {
@@ -536,38 +589,47 @@
           });
         });
       }
+
+      componentDidUpdate(prevProps, prevState){
+        resizePostThumbs();
+      }
+
       render(){
         if(this.state.posts !== null){
           let fetchTop = this.props.fetchTop;
           return(
           <div className="post-wrapper">
-  			<div className="post-anim container">
+            {/* first div is for the colored background*/}
+      			<div className="post-anim container">
+                {/* second div is for the bootstrap container and animation when post enters*/}
                 <div className="row">
-                    <div className="col-xs-12 col-sm-12">
-						 {this.state.posts.map(function(post){
-						    var mdConverter = new showdown.Converter(),
-						    postText=post.body,
-						    postHTML=mdConverter.makeHtml(postText),
-						    htmlObj={
-						      __html:postHTML
-						    };
-						    return(
-						      	<div className="post-thumbnails post-anim" id={post.id} key={post.id}>
-						            <h1 className="post-title">{post.title}</h1>
-						            <div className="post-paragraph" dangerouslySetInnerHTML={htmlObj}></div>
-						      		<a href={'https://jpoblog.herokuapp.com/post/' + post.slug} target="_blank">Show More</a>
-						        </div>             
-						    );
-						  })} 
-			        </div>
+                  <div className="col-xs-12 col-sm-12">
+        						 {this.state.posts.map(function(post){
+        						    let mdConverter = new showdown.Converter(),
+        						    postText=post.body,
+        						    postHTML=mdConverter.makeHtml(postText),
+        						    htmlObj={
+        						      __html:postHTML
+        						    };
+                        let containerId = 'thumb' + post.id;
+                        let postId = 'para' + post.id
+        						    return(
+        					      	<div className="post-thumbnails post-anim" id={containerId} key={post.id}>
+                              <p onClick={function(){expandPost(containerId, postId)}}>>></p>
+        					            <h1 className="post-title">{post.title}</h1>
+        					            <div id={postId} className="post-paragraph" dangerouslySetInnerHTML={htmlObj}></div>
+        					        </div>             
+        						    );
+        						  })} 
+    			        </div>
                 </div>
-            </div>
-            </div>
+              </div>          
+          </div>
           );       
         }
         else{
           return(
-            <div className='loader-container'>
+            <div className='loader-container-thumbnail'>
              <div className='loader'></div>
             </div>
           ); 
@@ -647,7 +709,7 @@
                     </div>
                   </div>                    
                 );
-              })} 
+              })}      
             </div>
           );       
         }
@@ -892,12 +954,13 @@
             </div>
             <Header />
             <Main />
+            {/* Hide for now
             <div className="action-button-top" onMouseLeave={deflateDong}>
               <div className="action-button share-button" onMouseOver={expandDong}></div>
               <a href="https://www.twitter.com/"><div id="child1" className="action-button-child twitter-button"></div></a>
               <a href="https://www.facebook.com/"><div id="child2" className="action-button-child facebook-button"></div></a>
               <a href="https://www.google.com/"><div id="child3" className="action-button-child google-button"></div></a>
-            </div>
+            </div> */}
           </div>
         );
       }
@@ -942,30 +1005,6 @@
       document.getElementById("child2").style.top = "45vw";
       document.getElementById("child3").style.top = "45vw";      
     }
-
-    let resizeId;
-
-    function resizePostThumbs(){
-      if($(window).width() < 750 ){
-        $(".post-thumbnails").css("width","100%");
-        $(".post-thumbnails").css("display","block");
-      }
-      else{
-        $(".post-thumbnails").css("width","25%");
-        $(".post-thumbnails").css("display","inline-block");
-      }
-    }
-
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeId);
-        resizeId = setTimeout(doneResizing, 100);
-    });
-
-    function doneResizing(){
-        resizePostThumbs();
-    }
-
-    $(window).ready(resizePostThumbs);
 
   </script>
 
