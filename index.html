@@ -1,1055 +1,1090 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <!-- REACT LIBRARY -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
-  <!-- REACT DOM LIBRARY -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
-  <!-- BABEL LIBRARY -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
-  <!-- REACT ROUTER -->
-  <script src="https://unpkg.com/react-router-dom@4.0.0/umd/react-router-dom.min.js"></script>
-  <!-- SHOWDOWN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.7/showdown.min.js"></script>
-  <!-- BOOTSTRAP -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <!-- REACT LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <!-- REACT ROUTER -->
+    <script src="https://unpkg.com/react-router-dom@4.0.0/umd/react-router-dom.min.js"></script>
+    <!-- SHOWDOWN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.7/showdown.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>    
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+    <title>Single Page Application Test</title>
+    <style>
+        body {
+            background-color: #223052;
+            margin: 0;
+        }
 
+        .footer{
+            background-color: #223052;
+            display: block;
+            height: 50px;
+        }
 
-  <title>Single Page Application Test</title>
-  <style>
-    body {
-      background-color: #223052;
-      margin: 0;
-    }
-    .footer{
-      background-color: #223052;
-      display: block;
-      height: 50px;
-    }
-  	html, body {
-  	    max-width: 100%;
-  	    overflow-x: hidden;
-  	}
-    ul.header li {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-    }
-    ul.header {
-      padding: 0;
-    }
-    ul.header li a {
-      color: #FFF;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .content {
-      background-color: #223052;
-    }
-    .content h2 {
-      padding: 0;
-      margin: 0;
-    }
-    .content li {
-      margin-bottom: 10px;
-    }
-    .test {
-      color: #000;
-      background-color: #0099FF;
-    }
-    .navbar{
-      margin-bottom: 0px;
-      border-radius: 0px;
-    }
-    .navbar-bg{
-        background-color:#223052;
-        border-bottom: 8px solid #1e2b49;
-    }
-    .navbar-brand, navbar-brand > a:hover{
-      text-decoration: none !important;
-      color:white;
-      font-family: 'Raleway', serif;
-    }
-    .navbar-brand{
-      text-decoration: none !important;
-      color:white;
-    }
-    .navbar-toggle .icon-bar{ 
-      background-color: #FFFFFF;
-    }
-    .navbar .nav > li > a:focus,
-    .navbar .nav > li > a:hover {
-      color: #223052 !important;
-      text-decoration: none;
-      background-color: wheat;
-    }
-    .navbar-nav {
-        display: flex;
-        flex-direction: row;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-    }
-    #menu-items.show > #menu-bar{
-      position: fixed;   
-      z-index: 11;
-      flex-direction: column;
-      border-bottom-left-radius:2%;
-      border-bottom-right-radius:2%;
-    }
-    #menu-items.show > ul {
-      background-color:rgba(35, 48, 83, 0.95);
-      width: 100%;
-    }
-    #menu-items.show > ul > li > a {
-      display: block;
-      text-align:center;
-    }
-    /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-    .sticky {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      z-index: 1;
-      opacity : 0.95;
-    }
-    /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-    .sticky + .content {
-      padding-top: 100px;
-    }
-    /*to remove the blue border when the div is focused on*/
-    #root{
-      outline-width: 0;
-      background-color: #223052;
-    }
-    #site-brand:hover{
-      color:white !important;
-    }
-    .profile-title {
-      font-family: 'Raleway', serif;
-      font-weight: Bold;
-      border-left: 2px solid;
-      padding-left: 5px;
-    }
-    .profile-text {
-        font-family: 'Merriweather', serif;
-    }
-    .avatar-container{
-      margin-top: 5%;
-      position: relative;
-      width: 40%;
-      min-width: 90px;
-    }
-    .avatar {
-      display:block;
-      padding-top:100%;
-      border-radius: 50%;
-      border: 2px solid black;
-      /* background-color: #333; */
-      background-image: url(https://github.com/senel34/node-test-deploy/blob/master/pp.jpg?raw=true);
-      background-size: 100%;
-    }
-    .sidenav {
-        height: 100%; /* 100% Full-height */
-        width: 0; /* 0 width - change this with JavaScript */
-        position: fixed; /* Stay in place */
-        z-index: 10; /* Stay on top */
-        top: 0; /* Stay at the top */
-        left: 0;
-        background-color: #111; /* Black*/
-        overflow-x: hidden; /* Disable horizontal scroll */
-        padding-top: 60px; /* Place content 60px from the top */
-        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-        opacity: 0.95;
-    }
-    .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-    .footer-info {
-      background-color: #F5F5F5;
-    }
-    .action-button {
-      position: fixed;
-      top: 44.9vw;
-      left: 1.8vw;
-      height: 3.3vw;
-      width:3.3vw;
-      background-color: transparent;
-      border: 0px;
-      border-radius: 50%;
-      z-index: 9;
-      transition: 0.2s;
-    }
-    .action-button-child {
-      position: fixed;
-      top: 45vw;
-      left: 2vw;
-      height: 3vw;
-      width:3vw;
-      background-color: transparent;
-      border: 0px;
-      border-radius: 50%;
-      z-index: 8;
-      transition: 0.3s;
-    }
-    .share-button{
-      background-image: url('https://cbwconline.com/IMG/Share.svg');
-      background-size: contain;      
-    }
-    .twitter-button{
-      background-image: url('https://cbwconline.com/IMG/Twitter-Flat.png');
-      background-size: contain;
-    }
-    .facebook-button{
-      background-image: url('https://cbwconline.com/IMG/Facebook-Flat.png');
-      background-size: contain;
-    }
-    .google-button{
-      background-image: url('https://cbwconline.com/IMG/Google%20Plus.svg');
-      background-size: contain;
-    }
-    .action-button-top{
-      position: fixed;
-      height: 15vw;
-      width:4vw;
-      top: 33vw;
-      left: 1.5vw;
-    }
-    .jumbotron {
-      margin-bottom: 0px;
-      background-color: #223052;
-      /*background-image: url("https://github.com/senel34/node-test-deploy/blob/master/bg.jpg?raw=true");*/
-      background-size: cover;
-      color: #fff;
-      text-align: center;
-    }
-    .jumbotron p{
-      display: inline-block;
-      text-align: center;
-    }
-    .jumbotron a{
-      display: inline-block;
-      text-align: center;
-      margin-left: 5px;
-    }
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
 
-    .loader-container{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
+        ul.header li {
+            display: inline;
+            list-style-type: none;
+            margin: 0;
+        }
 
-    .loader{
-      position: absolute;
-      left:50%;
-      top:50%;
-      border: 10px solid #f3f3f3;
-      border-top: 10px solid wheat;
-      border-radius: 50%;
-      width:50px;
-      height:50px;
-      animation: spin 1s linear infinite;
-    }
+        ul.header {
+            padding: 0;
+        }
 
-    .loader-container-thumbnail{
-      position: relative;
-      text-align:center      
-    }
+        ul.header li a {
+            color: #FFF;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    .loader-thumbnail{
-      display: inline-block;
-      border: 10px solid #f3f3f3;
-      border-top: 10px solid wheat;
-      border-radius: 50%;
-      width:50px;
-      height:50px;
-      animation: spin 1s linear infinite;
-    }
+        .content {
+            background-color: #223052;
+        }
 
-    @keyframes spin {
-      0%{ transform: rotate(0deg);}
-      100%{ transform: rotate(360deg);}
-    }
-    .main-text{
-      display: inline-block;
-      color:#ffffff !important;
-    }
-    .second-text{
-    }
-    .third-text{
-      display: inline-block;
-      color:wheat !important;
-    }
-    .main-content{
-      padding-left: 50px;
-      background-color: wheat;
-      padding-bottom: 50px;
-      padding-right: 0px;
-      width: 100%;
-      margin: 0px;
-    }
-    .post-container {
-      display: block;
-      height: 500px;
-      overflow: hidden;
-    }
+        .content h2 {
+            padding: 0;
+            margin: 0;
+        }
 
-    .post-wrapper{
-    	background-color: wheat;
-    	padding-bottom: 20px;
-      perspective: 100px;
-    }
+        .content li {
+            margin-bottom: 10px;
+        }
 
-    .fetched-post {
-      display: block;
-      overflow: hidden;
-      padding: 15px;
-      padding-top: 50px;
-      margin-top: 20px;
-      border-radius: 20px;
-      background-color: white;
-      box-shadow: 5px 5px 5px grey;  
-    }
+        .test {
+            color: #000;
+            background-color: #0099FF;
+        }
 
-    .post-paragraph {
-    	height: 280px;
-    	overflow: hidden;
-    }
+        .navbar{
+            margin-bottom: 0px;
+            border-radius: 0px;
+        }
 
-    .post-thumbnails {
-  		display: inline-block;
-  		overflow: hidden;
-  		padding: 15px;
-  		margin-top: 20px;
-  		margin-right: 5px;
-  		margin-left: 5px;
-  		border-radius: 20px;
-  		background-color: white;
-  		box-shadow: 5px 5px 5px grey;  
-    	width: 25%;
-    	height: 400px;
-      min-height:400px;
-      transition: width 0.2s ease-in;
-      transition: height 0.2s ease-in;
-      perspective: 1000px
-    }
+        .navbar-bg{
+                background-color:#223052;
+                border-bottom: 8px solid #1e2b49;
+        }
 
-    .post-title {
-      font-family: 'Raleway', serif;
-      text-align: center;
-    }
+        .navbar-brand, navbar-brand > a:hover{
+            text-decoration: none !important;
+            color:white;
+            font-family: 'Raleway', serif;
+        }
 
-    .main-heading{
-  	  border-bottom-left-radius: 50% 20%;
-  	  border-bottom-right-radius: 50% 20%;
-      font-family: 'Raleway', serif !important;
-      padding: 20px;
-      padding-top: 40px;
-      background-color: #223052;
-      color: wheat !important;
-      font-family: inherit;
-      margin: 0px;
-      font-weight: bold;
-      text-align: center;
-    }
+        .navbar-brand{
+            text-decoration: none !important;
+            color:white;
+        }
 
-    .post-anim{
-      animation: slideIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
+        .navbar-toggle .icon-bar{ 
+            background-color: #FFFFFF;
+        }
 
-    @keyframes slideIn{
-      from{
-        opacity: 0;
-        transform: translate3d(-20rem, 0, 500rem);
-      }
-      to{
-        opacity: 1;
-        transform: translate3d(0,0,0);
-      }
-    }
+        .navbar .nav > li > a:focus,
+        .navbar .nav > li > a:hover {
+            color: #223052 !important;
+            text-decoration: none;
+            background-color: wheat;
+        }
 
-    @keyframes bounce {
-      0%,
-      100%,
-      20%,
-      50%,
-      80% {
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-        transform: translateY(0);
-      }
-      40% {
-        -webkit-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-        transform: translateY(-10px);
-      }
-      60% {
-        -webkit-transform: translateY(-5px);
-        -ms-transform: translateY(-5px);
-        transform: translateY(-5px);
-      }
-    }
+        .navbar-nav {
+                display: flex;
+                flex-direction: row;
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+        }
 
-    .scroll-arrow{
-      position: inherit;
-      display: block;
-      width: 20px;
-      height: 20px;
-      border: 4px solid wheat;
-      border-width: 0px 0px 4px 4px;
-      transform: rotate(-45deg);
-      margin: auto;
-    }
+        #menu-items.show > #menu-bar{
+            position: fixed;     
+            z-index: 11;
+            flex-direction: column;
+            border-bottom-left-radius:2%;
+            border-bottom-right-radius:2%;
+        }
 
-    .scroll-arrow:after{
-      content: "";
-      position: fixed;
-      display: block;
-      bottom: 5px;
-      left: 5px;
-      width: 20px;
-      height: 20px;
-      border: 4px solid wheat;
-      border-width: 0px 0px 4px 4px;
-    }
+        #menu-items.show > ul {
+            background-color:rgba(35, 48, 83, 0.95);
+            width: 100%;
+        }
 
-    .bounce-wrapper{
-      animation: bounce 4s infinite 2s;
-    }
+        #menu-items.show > ul > li > a {
+            display: block;
+            text-align:center;
+        }
 
-    .arrow-wrapper{
-      text-align:center;
-      margin: auto;
-      background-color: #223052;
-      padding-bottom: 40px;
-    }
-    
-    .triangle-container{
-      position: relative;
-    }
-    .triangle-triangle-container{
-      position: absolute;
-	  bottom: 23px;
-    }
+        /** The sticky class is added to the navbar with JS when it reaches its scroll position */
+        .sticky {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            opacity : 0.95;
+        }
 
-	.triangle {
-	  display: inline;
-	  width: 0; 
-	  height: 0;
-	  bottom: 0;
-	  border-left: 25px solid transparent;
-	  border-right: 25px solid transparent;
-	  border-bottom: 25px solid #223052;
-	}
+        /** Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+        .sticky + .content {
+            padding-top: 100px;
+        }
+        /**to remove the blue border when the div is focused on*/
+        #root{
+            outline-width: 0;
+            background-color: #223052;
+        }
+        #site-brand:hover{
+            color:white !important;
+        }
+        .profile-title {
+            font-family: 'Raleway', serif;
+            font-weight: Bold;
+            border-left: 2px solid;
+            padding-left: 5px;
+        }
+        .profile-text {
+                font-family: 'Merriweather', serif;
+        }
+        .avatar-container{
+            margin-top: 5%;
+            position: relative;
+            width: 40%;
+            min-width: 90px;
+        }
+        .avatar {
+            display:block;
+            padding-top:100%;
+            border-radius: 50%;
+            border: 2px solid black;
+            /** background-color: #333; */
+            background-image: url(https://github.com/senel34/node-test-deploy/blob/master/pp.jpg?raw=true);
+            background-size: 100%;
+        }
+        .sidenav {
+                height: 100%; /** 100% Full-height */
+                width: 0; /** 0 width - change this with JavaScript */
+                position: fixed; /** Stay in place */
+                z-index: 10; /** Stay on top */
+                top: 0; /** Stay at the top */
+                left: 0;
+                background-color: #111; /** Black*/
+                overflow-x: hidden; /** Disable horizontal scroll */
+                padding-top: 60px; /** Place content 60px from the top */
+                transition: 0.5s; /** 0.5 second transition effect to slide in the sidenav */
+                opacity: 0.95;
+        }
+        .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+        }
+        .footer-info {
+            background-color: #F5F5F5;
+        }
+        .action-button {
+            position: fixed;
+            top: 44.9vw;
+            left: 1.8vw;
+            height: 3.3vw;
+            width:3.3vw;
+            background-color: transparent;
+            border: 0px;
+            border-radius: 50%;
+            z-index: 9;
+            transition: 0.2s;
+        }
+        .action-button-child {
+            position: fixed;
+            top: 45vw;
+            left: 2vw;
+            height: 3vw;
+            width:3vw;
+            background-color: transparent;
+            border: 0px;
+            border-radius: 50%;
+            z-index: 8;
+            transition: 0.3s;
+        }
+        .share-button{
+            background-image: url('https://cbwconline.com/IMG/Share.svg');
+            background-size: contain;            
+        }
+        .twitter-button{
+            background-image: url('https://cbwconline.com/IMG/Twitter-Flat.png');
+            background-size: contain;
+        }
+        .facebook-button{
+            background-image: url('https://cbwconline.com/IMG/Facebook-Flat.png');
+            background-size: contain;
+        }
+        .google-button{
+            background-image: url('https://cbwconline.com/IMG/Google%20Plus.svg');
+            background-size: contain;
+        }
+        .action-button-top{
+            position: fixed;
+            height: 15vw;
+            width:4vw;
+            top: 33vw;
+            left: 1.5vw;
+        }
+        .jumbotron {
+            margin-bottom: 0px;
+            background-color: #223052;
+            /**background-image: url("https://github.com/senel34/node-test-deploy/blob/master/bg.jpg?raw=true");*/
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+        .jumbotron p{
+            display: inline-block;
+            text-align: center;
+        }
+        .jumbotron a{
+            display: inline-block;
+            text-align: center;
+            margin-left: 5px;
+        }
 
-	.triangle-wheat {
-	  display: inline;
-	  width: 0; 
-	  height: 0;
-	  bottom: 0;
-	  border-left: 25px solid transparent;
-	  border-right: 25px solid transparent;
-	  border-bottom: 25px solid wheat;
-	}
+        .loader-container{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
 
-	.copyright-text{
-		text-align:center;
-		color:#FFFFFF;
-	}
+        .loader{
+            position: absolute;
+            left:50%;
+            top:50%;
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid wheat;
+            border-radius: 50%;
+            width:50px;
+            height:50px;
+            animation: spin 1s linear infinite;
+        }
 
-  </style>
+        .loader-container-thumbnail{
+            position: relative;
+            text-align:center            
+        }
+
+        .loader-thumbnail{
+            display: inline-block;
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid wheat;
+            border-radius: 50%;
+            width:50px;
+            height:50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0%{ transform: rotate(0deg);}
+            100%{ transform: rotate(360deg);}
+        }
+        .main-text{
+            display: inline-block;
+            color:#ffffff !important;
+        }
+        .second-text{
+        }
+        .third-text{
+            display: inline-block;
+            color:wheat !important;
+        }
+        .main-content{
+            padding-left: 50px;
+            background-color: wheat;
+            padding-bottom: 50px;
+            padding-right: 0px;
+            width: 100%;
+            margin: 0px;
+        }
+        .post-container {
+            display: block;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .post-wrapper{
+          background-color: wheat;
+          padding-bottom: 20px;
+            perspective: 100px;
+        }
+
+        .fetched-post {
+            display: block;
+            overflow: hidden;
+            padding: 15px;
+            padding-top: 50px;
+            margin-top: 20px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 5px 5px 5px grey;    
+        }
+
+        .post-paragraph {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .post-thumbnails {
+            display: inline-block;
+            overflow: hidden;
+            padding: 15px;
+            margin-top: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 5px 5px 5px grey;    
+            width: 25%;
+            height: 400px;
+            min-height:400px;
+            transition: width 0.2s ease-in;
+            transition: height 0.2s ease-in;
+            perspective: 1000px
+        }
+
+        .post-title {
+            font-family: 'Raleway', serif;
+            text-align: center;
+        }
+
+        .main-heading{
+            border-bottom-left-radius: 50% 20%;
+            border-bottom-right-radius: 50% 20%;
+            font-family: 'Raleway', serif !important;
+            padding: 20px;
+            padding-top: 40px;
+            background-color: #223052;
+            color: wheat !important;
+            font-family: inherit;
+            margin: 0px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .post-anim{
+            animation: slideIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
+
+        @keyframes slideIn{
+            from{
+                opacity: 0;
+                transform: translate3d(-20rem, 0, 500rem);
+            }
+            to{
+                opacity: 1;
+                transform: translate3d(0,0,0);
+            }
+        }
+
+        @keyframes bounce {
+            0%,
+            100%,
+            20%,
+            50%,
+            80% {
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+            40% {
+                -webkit-transform: translateY(-10px);
+                -ms-transform: translateY(-10px);
+                transform: translateY(-10px);
+            }
+            60% {
+                -webkit-transform: translateY(-5px);
+                -ms-transform: translateY(-5px);
+                transform: translateY(-5px);
+            }
+        }
+
+        .scroll-arrow{
+            position: inherit;
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 4px solid wheat;
+            border-width: 0px 0px 4px 4px;
+            transform: rotate(-45deg);
+            margin: auto;
+        }
+
+        .scroll-arrow:after{
+            content: "";
+            position: fixed;
+            display: block;
+            bottom: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            border: 4px solid wheat;
+            border-width: 0px 0px 4px 4px;
+        }
+
+        .bounce-wrapper{
+            animation: bounce 4s infinite 2s;
+        }
+
+        .arrow-wrapper{
+            text-align:center;
+            margin: auto;
+            background-color: #223052;
+            padding-bottom: 40px;
+        }
+        
+        .triangle-container{
+            position: relative;
+        }
+        .triangle-triangle-container{
+            position: absolute;
+            bottom: 23px;
+        }
+
+        .triangle {
+           display: inline;
+           width: 0; 
+           height: 0;
+           bottom: 0;
+           border-left: 25px solid transparent;
+           border-right: 25px solid transparent;
+           border-bottom: 25px solid #223052;
+  }
+
+        .triangle-wheat {
+            display: inline;
+            width: 0; 
+            height: 0;
+            bottom: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 25px solid wheat;
+        }
+
+        .copyright-text{
+          text-align:center;
+          color:#FFFFFF;
+        }
+
+    </style>
 </head>
 
 <body>
-
-  <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
-
-  <script text="text/javascript">
-    let resizeId;
-
-    function resizePostThumbs(){
-      /*change the post thumbnail layout on screen width change*/
-      if($(window).width() < 750 ){
-        $(".post-thumbnails").css("width","100%");
-        $(".post-thumbnails").css("display","block");
-      }
-      else{
-        $(".post-thumbnails").css("width","25%");
-        $(".post-thumbnails").css("display","inline-block"); 
-      }
-    }
-
-    window.addEventListener('resize', function() {
-        /*add timeout on resize before resizing other elements*/
-        clearTimeout(resizeId);
-        resizeId = setTimeout(doneResizing, 100);
-    });
-
-    function doneResizing(){
-        /*call the function to resize after a few seconds*/
-        resizePostThumbs();
-    }
-
-    $(window).ready(resizePostThumbs);
-
-    function expandPost(containerId, postId){
-      /* expands the post thumbnail*/
-      if($("#" + postId).height() <= 280){
-        $("#" + containerId).css("background-color","white");
-        $("#" + containerId).css("width","100%");
-        $("#" + containerId).css("height","100%");
-        $("#" + postId).css("height","100%");
-        $("#" + containerId).focus();
-        $("#" + postId).focus();
-      } else{
-        /* hides the post thumbnail*/
-        $("#" + postId).css("height","280px");  
-        $("#" + containerId).css("height","400px");  
-        if($(window).width() < 750 ){
-            $("#" + containerId).css("width","100%");
-            $("#" + containerId).css("display","block");
-        }
-        else{
-          $("#" + containerId).css("width","25%");
-          $("#" + containerId).css("display","inline-block"); 
-        }
-      }
-    }
-
-  </script>
-
-  <script type="text/babel">
-      const {
-      HashRouter,
-      Switch,
-      Route,
-      Link,
-      IndexLink,
-      BrowserRouter,
-      NavLink
-    } = ReactRouterDOM
-
-    class TriangleRow extends React.Component{
-    	render(){
-    		return(
-	            <div className="triangle-container">
-	            	<div className="triangle-triangle-container">
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-		            	<div className="triangle-wheat"></div>
-	            	</div>
-	            </div>
-    		);
-    	}
-    }
-
-    class PostThumbs extends React.Component{
-      /* Post thumbnail component, displays previews of posts that are expandable
-      */
-      constructor(props){
-        super(props);
-        this.state = {
-          posts: null
-        };
-      }
-      
-      componentDidMount(){
-      {/* current stylings fitted for 4 posts previews */}
-        let apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=4';
-        fetch(apiURL)
-          .then((response) => {
-          return response.json();
-          })
-          .then((data) => {
-          this.setState({
-           posts: data   
-          });
-        });
-      }
-
-      componentDidUpdate(prevProps, prevState){
-        resizePostThumbs();
-        $(".post-thumbnails").bind('mouseenter', (e)=> {
-          if($(e.currentTarget).height() <= 400){
-            $(e.currentTarget).css("background-color","lightyellow");
-          }
-        });
-        $(".post-thumbnails").bind('mouseleave', (e)=> {
-          if($(e.currentTarget).height() <= 400){
-            $(e.currentTarget).css("background-color","white");
-          }
-        });
-      }
-
-      render(){
-        if(this.state.posts !== null){
-          let fetchTop = this.props.fetchTop;
-          return(
-          <div className="post-wrapper">
-            {/* first div is for the colored background*/}
-      			<div className="post-anim container">
-                {/* second div is for the bootstrap container and animation when post enters*/}
-                <div className="row">
-                  <div className="col-xs-12 col-sm-12">
-        						 {this.state.posts.map(function(post){
-        						    let mdConverter = new showdown.Converter(),
-        						    postText=post.body,
-        						    postHTML=mdConverter.makeHtml(postText),
-        						    htmlObj={
-        						      __html:postHTML
-        						    };
-
-                        let containerId = 'thumb' + post.id;
-                        let postId = 'para' + post.id
-
-        						    return(
-        					      	<div className="post-thumbnails post-anim" id={containerId} key={post.id}>
-                              {/* expands the post thumbnail on clicking the expand icon*/}
-                              <i onClick={function(){expandPost(containerId, postId)}} className="fas fa-expand"></i>
-        					            <h1 className="post-title">{post.title}</h1>
-        					            <div id={postId} className="post-paragraph" dangerouslySetInnerHTML={htmlObj}></div>
-        					        </div>             
-        						    );
-        						  })} 
-    			        </div>
-                </div>
-              </div>           
-          </div>
-          );       
-        }
-        else{
-          return(
-            <div className='loader-container-thumbnail'>
-             <div className='loader-thumbnail'></div>
-            </div>
-          ); 
-        }
-      }
-    }
-
-    class Post extends React.Component{
-      constructor(props){
-        super(props);
-        this.state = {
-          posts: null
-        };
-      }
-      
-      componentDidMount(){
-        let apiURL;
+    <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
+    <script text="text/javascript">
         
-        if(this.props.fetchTop){
-          apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=5'
-        } else{
-          apiURL = 'https://jpoblog.herokuapp.com/posts?type=json'
+        let resizeId;
+
+        function resizePostThumbs(){
+            /**change the post thumbnail layout on screen width change*/
+            if($(window).width() < 750 ){
+                $(".post-thumbnails").css("width","100%");
+                $(".post-thumbnails").css("display","block");
+            }
+            else{
+                $(".post-thumbnails").css("width","25%");
+                $(".post-thumbnails").css("display","inline-block"); 
+            }
         }
-        fetch(apiURL)
-          .then((response) => {
-          return response.json();
-          })
-          .then((data) => {
-          this.setState({
-           posts: data   
-          });
+
+        window.addEventListener('resize', function() {
+            /**add timeout on resize before resizing other elements*/
+            clearTimeout(resizeId);
+            resizeId = setTimeout(doneResizing, 100);
         });
-      }
-      render(){
-        if(this.state.posts !== null){
-          let fetchTop = this.props.fetchTop;
-          return(
-            <div className="post-wrapper">
-             {this.state.posts.map(function(post){
-                var mdConverter = new showdown.Converter(),
-                postText=post.body,
-                postHTML=mdConverter.makeHtml(postText),
-                htmlObj={
-                  __html:postHTML
-                };
+
+        function doneResizing(){
+            /**call the function to resize after a few seconds*/
+            resizePostThumbs();
+        }
+
+        $(window).ready(resizePostThumbs);
+
+        function expandPost(containerId, postId){
+            /** expands the post thumbnail*/
+            if($("#" + postId).height() <= 280){
+                $("#" + containerId).css("background-color","white");
+                $("#" + containerId).css("width","100%");
+                $("#" + containerId).css("height","100%");
+                $("#" + postId).css("height","100%");
+                $("#" + containerId).focus();
+                $("#" + postId).focus();
+            } else{
+                /** hides the post thumbnail*/
+                $("#" + postId).css("height","280px");    
+                $("#" + containerId).css("height","400px");    
+                if($(window).width() < 750 ){
+                        $("#" + containerId).css("width","100%");
+                        $("#" + containerId).css("display","block");
+                }
+                else{
+                    $("#" + containerId).css("width","25%");
+                    $("#" + containerId).css("display","inline-block"); 
+                }
+            }
+        }
+    </script>
+
+    <script type="text/babel">
+        const {
+            HashRouter,
+            Switch,
+            Route,
+            Link,
+            IndexLink,
+            BrowserRouter,
+            NavLink
+        } = ReactRouterDOM
+
+        class TriangleRow extends React.Component{
+            /** Component for row of triangles , currently used under the profile header */
+            render(){
                 return(
-                  <div className="post-anim container" key={post.id}>
-                    <div className="row">
-                      <div className="col-xs-0 col-sm-0"></div>
-                      <div className="col-xs-12 col-sm-12">
-                      {/* Dirty but will do for now */}
-                        {fetchTop ?
-                          <div className="fetched-post" id={post.id}>
-                            <h1 className="post-title">{post.title}</h1>
-                            <div dangerouslySetInnerHTML={htmlObj}></div>
-                          </div> :
-                          <div> 
-                            <div className="post-container" id={post.id}>
-                              <h1 className="post-title">{post.title}</h1>
-                              <div dangerouslySetInnerHTML={htmlObj}></div>
-                            </div>
-                            <a id={"expand" + post.id} href="javascript:void(0)" onClick={ () => {
-                              if(document.getElementById(post.id).style.height === "100%"){
-                                document.getElementById(post.id).style.height = "500px";
-                                document.getElementById("expand" + post.id).textContent = "Show More";
-                              }
-                              else{
-                                document.getElementById(post.id).style.height = "100%";
-                                document.getElementById("expand" + post.id).textContent = "Show Less";
-                              }
-                            }}>Show More</a>
-                          </div>
-                        }
-                      </div>
-                      <div className="col-xs-0 col-sm-0"></div>
-                    </div>
-                  </div>                    
+                    <div className="triangle-container">
+                        <div className="triangle-triangle-container">
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                            <div className="triangle-wheat"></div>
+                        </div>
+                  </div>
                 );
-              })}      
-            </div>
-          );       
+            }
         }
-        else{
-          return(
-            <div className='loader-container'>
-             <div className='loader'></div>
-            </div>
-          ); 
+
+        class PostThumbs extends React.Component{
+            /** Post thumbnail component, displays previews of posts that are expandable */
+            constructor(props){
+                super(props);
+                this.state = {
+                    /** posts is an array of objects fetched from the blog */
+                    posts: null
+                };
+            }
+            
+            componentDidMount(){
+                /** current stylings fitted for 4 posts previews, fetch 4 posts*/
+                let apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=4';
+                fetch(apiURL)
+                    .then((response) => {
+                    return response.json();
+                    })
+                    .then((data) => {
+                    this.setState({
+                     posts: data     
+                    });
+                });
+            }
+
+            componentDidUpdate(prevProps, prevState){
+                /** after state change, the posts are retrieved, bind events to the post thumbnail to highlight */
+                resizePostThumbs();
+                $(".post-thumbnails").bind('mouseenter', (e)=> {
+                    if($(e.currentTarget).height() <= 400){
+                        $(e.currentTarget).css("background-color","lightyellow");
+                    }
+                });
+                $(".post-thumbnails").bind('mouseleave', (e)=> {
+                    if($(e.currentTarget).height() <= 400){
+                        $(e.currentTarget).css("background-color","white");
+                    }
+                });
+            }
+
+            render(){
+                if(this.state.posts !== null){
+                    let fetchTop = this.props.fetchTop;
+                    return(
+                        <div className="post-wrapper">
+                        {/** first div is for the colored background*/}
+                            <div className="post-anim container">
+                            {/** second div is for the bootstrap container and animation when post enters*/}
+                                <div className="row">
+                                    <div className="col-xs-12 col-sm-12">
+
+                                        {this.state.posts.map(function(post){
+                                            {/** showdown is a js markdown converter */}
+                                            let mdConverter = new showdown.Converter();
+                                            let postText = post.body;
+                                            {/** convert the markdown from post object to html */}
+                                            let postHTML = mdConverter.makeHtml(postText);
+                                            let htmlObj = {
+                                                __html:postHTML
+                                            };
+
+                                            let containerId = 'thumb' + post.id;
+                                            let postId = 'para' + post.id;
+
+                                            return(
+                                                <div className="post-thumbnails post-anim" id={containerId} key={post.id}>
+                                                    {/** expands the post thumbnail on clicking the expand icon*/}
+                                                    <i onClick={function(){expandPost(containerId, postId)}} className="fas fa-expand"></i>
+                                                    <h1 className="post-title">{post.title}</h1>
+                                                    <div id={postId} className="post-paragraph" dangerouslySetInnerHTML={htmlObj}></div>
+                                                </div>                         
+                                            );
+                                      })} 
+                                    </div>
+                                </div>
+                            </div>                     
+                        </div>
+                    );             
+                }
+                else{
+                    return(
+                        <div className='loader-container-thumbnail'>
+                            <div className='loader-thumbnail'></div>
+                        </div>
+                    ); 
+                }
+            }
         }
-      }
-    }
 
-    class Header extends React.Component {
-      constructor(props){
-        super(props);
-        this.toggleNavbar = this.toggleNavbar.bind(this);
-        this.resetNavBar = this.resetNavBar.bind(this);
-        this.state = {
-          collapsed: true
-        };
-      }
-      resetNavBar(){
-        document.getElementById('root').focus();
-        this.setState({
-          collapsed: true
-        });
-      }
-      toggleNavbar(){
-        this.setState({
-          collapsed: !this.state.collapsed
-        });
-      }
-      render(){
-        const collapsed = this.state.collapsed;
-        const menuClass = collapsed ? "navbar-collapse collapse" : "navbar-collapse collapse show";
-        return(
-          <nav className="navbar navbar-dark navbar-bg" id="navigationbar" role="navigation">
-              <div className="container">
-                  <div className="navbar-header">
-                    <button type="button" onClick={this.toggleNavbar} className="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items" aria-expanded="false">
-                      <span className="sr-only">Toggle navigation</span>
-                      <span className="icon-bar"></span>
-                      <span className="icon-bar"></span>
-                      <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" href="#/" id="site-brand">Test SPA</a>
-                  </div>
-                  <div className={`${menuClass}`} id="menu-items" aria-expanded="false">
-                   <ul className='nav navbar-nav header' id="menu-bar">
-                      <li><NavLink exact to='/'><div onClick={this.resetNavBar}>Home</div></NavLink></li>
-                      <li><NavLink exact to='/blog'><div onClick={this.resetNavBar}>Blog</div></NavLink></li>
-                      {/*<li><NavLink exact to='/skills'><div onClick={this.resetNavBar}>Skills</div></NavLink></li>
-                      <li><NavLink exact to='/interests'><div onClick={this.resetNavBar}>Interests</div></NavLink></li>
-                      <li><a href="javascript:void(0)" onClick={openNav}>Open</a></li>*/}
-                    </ul>
-                  </div>
-              </div>
-          </nav>
-        );
-      };
-    }
+        class Post extends React.Component{
+            /** All post from the blog, consider to be removed */
 
-    class Blog extends React.Component{
-      componentDidMount(){
-        document.getElementById('root').focus();
-      }
-      render(){
-        return(
-          <div>
-            <Post fetchTop={false}/>
-          </div>
-        );
-      }
-    }
+            constructor(props){
+                super(props);
+                this.state = {
+                    posts: null
+                };
+            }
+            
+            componentDidMount(){
+                let apiURL;
+                
+                if(this.props.fetchTop){
+                    apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=5'
+                } else{
+                    apiURL = 'https://jpoblog.herokuapp.com/posts?type=json'
+                }
+                fetch(apiURL)
+                    .then((response) => {
+                    return response.json();
+                    })
+                    .then((data) => {
+                    this.setState({
+                     posts: data     
+                    });
+                });
+            }
+            render(){
+                if(this.state.posts !== null){
+                    let fetchTop = this.props.fetchTop;
+                    return(
+                        <div className="post-wrapper">
+                         {this.state.posts.map(function(post){
+                                var mdConverter = new showdown.Converter(),
+                                postText=post.body,
+                                postHTML=mdConverter.makeHtml(postText),
+                                htmlObj={
+                                    __html:postHTML
+                                };
+                                return(
+                                    <div className="post-anim container" key={post.id}>
+                                        <div className="row">
+                                            <div className="col-xs-0 col-sm-0"></div>
+                                            <div className="col-xs-12 col-sm-12">
+                                            {/** Dirty but will do for now */}
+                                                {fetchTop ?
+                                                    <div className="fetched-post" id={post.id}>
+                                                        <h1 className="post-title">{post.title}</h1>
+                                                        <div dangerouslySetInnerHTML={htmlObj}></div>
+                                                    </div> :
+                                                    <div> 
+                                                        <div className="post-container" id={post.id}>
+                                                            <h1 className="post-title">{post.title}</h1>
+                                                            <div dangerouslySetInnerHTML={htmlObj}></div>
+                                                        </div>
+                                                        <a id={"expand" + post.id} href="javascript:void(0)" onClick={ () => {
+                                                            if(document.getElementById(post.id).style.height === "100%"){
+                                                                document.getElementById(post.id).style.height = "500px";
+                                                                document.getElementById("expand" + post.id).textContent = "Show More";
+                                                            }
+                                                            else{
+                                                                document.getElementById(post.id).style.height = "100%";
+                                                                document.getElementById("expand" + post.id).textContent = "Show Less";
+                                                            }
+                                                        }}>Show More</a>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <div className="col-xs-0 col-sm-0"></div>
+                                        </div>
+                                    </div>                                        
+                                );
+                            })}            
+                        </div>
+                    );             
+                }
+                else{
+                    return(
+                        <div className='loader-container'>
+                         <div className='loader'></div>
+                        </div>
+                    ); 
+                }
+            }
+        }
 
-    class ProfileHeader extends React.Component {
-      render(){
-        return(
-        	<div>
-          <div className='jumbotron'>
-            <h1 className='main-text'>Test</h1> <h1 className='third-text'>Jumbotron</h1><br></br>
-            <p> Using bootstrap jumbotron</p>
-            <a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>
-          </div>
-			</div>
-        );        
-      }
-    }
+        class Header extends React.Component {
+            /** Navigation bar / header of the page */
 
-    class Home extends React.Component {
-      componentDidMount(){
-        document.getElementById('root').focus();
-      }
-      render(){
-        return(
-        <div>
-        <ProfileHeader />
-          <div className='container main-content'>
-            <div className='row'>
-              <div className="col-xs-0 col-sm-0"/>
-              <div className="col-xs-8 col-sm-8">
-                <h1 className='profile-title'>Insert Profile Name Here</h1>
-                <p className='profile-text'>Insert title here?<br/><br/>Here is another line
-                <br/>supposed to contain some kind of information
-                <br/>But I'll just add lorem ipsum
-                <br/> <br/>Supposedly knows: 
-                </p>
-                <ul className='profile-text'>
-                   <li>Python</li>
-                   <li>Java</li>
-                   <li>Flask</li>
-                </ul>
-              </div>
-              <div className="col-xs-4 col-sm-4">
-                <br/>
-                <div className="avatar-container">
-                  <div className='avatar'></div>
+            constructor(props){
+                super(props);
+                this.toggleNavbar = this.toggleNavbar.bind(this);
+                this.resetNavBar = this.resetNavBar.bind(this);
+                this.state = {
+                    collapsed: true
+                };
+            }
+            resetNavBar(){
+                document.getElementById('root').focus();
+                this.setState({
+                    collapsed: true
+                });
+            }
+            toggleNavbar(){
+                this.setState({
+                    collapsed: !this.state.collapsed
+                });
+            }
+            render(){
+                const collapsed = this.state.collapsed;
+                const menuClass = collapsed ? "navbar-collapse collapse" : "navbar-collapse collapse show";
+                return(
+                    <nav className="navbar navbar-dark navbar-bg" id="navigationbar" role="navigation">
+                            <div className="container">
+                                    <div className="navbar-header">
+                                        <button type="button" onClick={this.toggleNavbar} className="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items" aria-expanded="false">
+                                            <span className="sr-only">Toggle navigation</span>
+                                            <span className="icon-bar"></span>
+                                            <span className="icon-bar"></span>
+                                            <span className="icon-bar"></span>
+                                        </button>
+                                        <a className="navbar-brand" href="#/" id="site-brand">Test SPA</a>
+                                    </div>
+                                    <div className={`${menuClass}`} id="menu-items" aria-expanded="false">
+                                     <ul className='nav navbar-nav header' id="menu-bar">
+                                            <li><NavLink exact to='/'><div onClick={this.resetNavBar}>Home</div></NavLink></li>
+                                            <li><NavLink exact to='/blog'><div onClick={this.resetNavBar}>Blog</div></NavLink></li>
+                                            {/**<li><NavLink exact to='/skills'><div onClick={this.resetNavBar}>Skills</div></NavLink></li>
+                                            <li><NavLink exact to='/interests'><div onClick={this.resetNavBar}>Interests</div></NavLink></li>
+                                            <li><a href="javascript:void(0)" onClick={openNav}>Open</a></li>*/}
+                                        </ul>
+                                    </div>
+                            </div>
+                    </nav>
+                );
+            };
+        }
+
+        class Blog extends React.Component{
+            /** Component containing the Post component, rendered when navigating to Blog from navbar */
+
+            componentDidMount(){
+                document.getElementById('root').focus();
+            }
+            render(){
+                return(
+                    <div>
+                        <Post fetchTop={false}/>
+                    </div>
+                );
+            }
+        }
+
+        class ProfileHeader extends React.Component {
+
+            render(){
+                return(
+                    <div>
+                      <div className='jumbotron'>
+                          <h1 className='main-text'>Test</h1> <h1 className='third-text'>Jumbotron</h1><br></br>
+                          <p> Using bootstrap jumbotron</p>
+                          <a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>
+                      </div>
+                    </div>
+                );                
+            }
+        }
+
+        class Home extends React.Component {
+            componentDidMount(){
+                document.getElementById('root').focus();
+            }
+            render(){
+                return(
+                <div>
+                <ProfileHeader />
+                    <div className='container main-content'>
+                        <div className='row'>
+                            <div className="col-xs-0 col-sm-0"/>
+                            <div className="col-xs-8 col-sm-8">
+                                <h1 className='profile-title'>Insert Profile Name Here</h1>
+                                <p className='profile-text'>Insert title here?<br/><br/>Here is another line
+                                <br/>supposed to contain some kind of information
+                                <br/>But I'll just add lorem ipsum
+                                <br/> <br/>Supposedly knows: 
+                                </p>
+                                <ul className='profile-text'>
+                                     <li>Python</li>
+                                     <li>Java</li>
+                                     <li>Flask</li>
+                                </ul>
+                            </div>
+                            <div className="col-xs-4 col-sm-4">
+                                <br/>
+                                <div className="avatar-container">
+                                    <div className='avatar'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div className="triangle-container">
+                          <div className="triangle-triangle-container">
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                          </div>
+                        </div>
+                        <h1 className="main-heading">Latest Posts</h1>
+                        <div className="arrow-wrapper">
+                            <div className="bounce-wrapper">
+                                <div className="scroll-arrow"></div>
+                            </div>
+                        </div>
+                        <PostThumbs/>
+                        {/**<Post fetchTop={true}/>*/}
+                        <div className="footer">
+                          <div className="copyright-text">
+                          </div>
+                        </div>
                 </div>
-              </div>
-            </div>
-          </div>
-            <div className="triangle-container">
-            	<div className="triangle-triangle-container">
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-	            	<div className="triangle"></div>
-            	</div>
-            </div>
-            <h1 className="main-heading">Latest Posts</h1>
-            <div className="arrow-wrapper">
-              <div className="bounce-wrapper">
-                <div className="scroll-arrow"></div>
-              </div>
-            </div>
-            <PostThumbs/>
-            {/*<Post fetchTop={true}/>*/}
-            <div className="footer">
-            	<div className="copyright-text">
-            	</div>
-            </div>
-        </div>
-        );
-      }
-    }
+                );
+            }
+        }
 
-    class Skills extends React.Component {
-      componentDidMount(){
-        document.getElementById('root').focus();
-      }
-      render(){
-        return(
-          <div>
-            <h1>Skills</h1>  
-          </div>
-        ); 
-      }
-    }
-    class Interests extends React.Component {
-      
-      componentDidMount(){
-        var elem = document.getElementById('root');
-        elem.focus();
-      }
-      render(){
-        return(
-          <div>
-            <h1>Interests</h1>  
-          </div>
-        ); 
-      }
-    }
-    class Footer extends React.Component {
-      render() {
-        return(
-          <footer className='footer-info'>
-            <p>Testing</p>
-          </footer>
+        class Skills extends React.Component {
+            componentDidMount(){
+                document.getElementById('root').focus();
+            }
+            render(){
+                return(
+                    <div>
+                        <h1>Skills</h1>    
+                    </div>
+                ); 
+            }
+        }
+
+        class Interests extends React.Component {
+            
+            componentDidMount(){
+                var elem = document.getElementById('root');
+                elem.focus();
+            }
+            render(){
+                return(
+                    <div>
+                        <h1>Interests</h1>    
+                    </div>
+                ); 
+            }
+        }
+
+        class Footer extends React.Component {
+            render() {
+                return(
+                    <footer className='footer-info'>
+                        <p>Testing</p>
+                    </footer>
+                );
+            }
+        }
+
+        class Main extends React.Component {
+            constructor(props){
+                super(props);
+            }
+            componentDidMount(){
+            }
+            render(){
+                return(
+                    <Switch>
+                        <Route exact path='/' component={Home}/>
+                        <Route exact path='/blog' component={Blog}/>
+                        {/**<Route path='/skills' component={Skills}/>
+                        <Route path='/interests' component={Interests}/> */}
+                    </Switch>
+                );
+            }
+        }
+
+        class App extends React.Component {
+            constructor(props){
+                super(props);
+            }
+            render(){
+                return(
+                    <div>
+                        <div id="mySidenav" className="sidenav">
+                            <a className="closebtn" onClick={closeNav} href="javascript:void(0)">&times;</a>
+                        </div>
+                        <Header />
+                        <Main />
+                        {/** Hide for now
+                        <div className="action-button-top" onMouseLeave={deflateActionButton}>
+                            <div className="action-button share-button" onMouseOver={expandActionButton}></div>
+                            <a href="https://www.twitter.com/"><div id="child1" className="action-button-child twitter-button"></div></a>
+                            <a href="https://www.facebook.com/"><div id="child2" className="action-button-child facebook-button"></div></a>
+                            <a href="https://www.google.com/"><div id="child3" className="action-button-child google-button"></div></a>
+                        </div> */}
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            (
+                <HashRouter>
+                    <App />
+                </HashRouter>
+            ), document.getElementById('root')
         );
-      }
-    }
-    class Main extends React.Component {
-      constructor(props){
-        super(props);
-      }
-      componentDidMount(){
-      }
-      render(){
-        return(
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/blog' component={Blog}/>
-            {/*<Route path='/skills' component={Skills}/>
-            <Route path='/interests' component={Interests}/> */}
-          </Switch>
-        );
-      }
-    }
-    class App extends React.Component {
-      constructor(props){
-        super(props);
-      }
-      render(){
-        return(
-          <div>
-            <div id="mySidenav" className="sidenav">
-              <a className="closebtn" onClick={closeNav} href="javascript:void(0)">&times;</a>
-            </div>
-            <Header />
-            <Main />
-            {/* Hide for now
-            <div className="action-button-top" onMouseLeave={deflateDong}>
-              <div className="action-button share-button" onMouseOver={expandDong}></div>
-              <a href="https://www.twitter.com/"><div id="child1" className="action-button-child twitter-button"></div></a>
-              <a href="https://www.facebook.com/"><div id="child2" className="action-button-child facebook-button"></div></a>
-              <a href="https://www.google.com/"><div id="child3" className="action-button-child google-button"></div></a>
-            </div> */}
-          </div>
-        );
-      }
-    }
-    ReactDOM.render(
-      (
-        <HashRouter>
-          <App />
-        </HashRouter>
-      ), document.getElementById('root')
-    );
+        
+        // JS Scroll part
+        window.onscroll = () => {
+            // Get the navbar
+            var navbar = document.getElementById("navigationbar");        
+            // Get the offset position of the navbar
+            var sticky = navbar.clientHeight - 20;
+            // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        };
+
+        /** Open the sidenav */
+        function openNav() {
+                document.getElementById("mySidenav").style.width = "100%";
+        }
+
+        /** Close/hide the sidenav */
+        function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+        }
     
-    // JS Scroll part
-    window.onscroll = () => {
-      // Get the navbar
-      var navbar = document.getElementById("navigationbar");    
-      // Get the offset position of the navbar
-      var sticky = navbar.clientHeight - 20;
-      // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-      } else {
-        navbar.classList.remove("sticky");
-      }
-    };
-    /* Open the sidenav */
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "100%";
-    }
-    /* Close/hide the sidenav */
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-  
-    function expandDong(){
-      document.getElementById("child1").style.top = "41vw";
-      document.getElementById("child2").style.top = "37vw";
-      document.getElementById("child3").style.top = "33vw";
-    }
-    function deflateDong(){
-      document.getElementById("child1").style.top = "45vw";
-      document.getElementById("child2").style.top = "45vw";
-      document.getElementById("child3").style.top = "45vw";      
-    }
+        function expandActionButton(){
+            document.getElementById("child1").style.top = "41vw";
+            document.getElementById("child2").style.top = "37vw";
+            document.getElementById("child3").style.top = "33vw";
+        }
 
-  </script>
-
+        function deflateActionButton(){
+            document.getElementById("child1").style.top = "45vw";
+            document.getElementById("child2").style.top = "45vw";
+            document.getElementById("child3").style.top = "45vw";            
+        }
+    </script>
 </body>
 </html>
