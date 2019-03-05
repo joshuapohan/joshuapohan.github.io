@@ -390,7 +390,7 @@
         }
 
         .post-anim{
-            animation: slideIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            animation: slideIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
         }
 
         @keyframes slideIn{
@@ -509,8 +509,13 @@
                 $(".post-thumbnails").css("display","block");
             }
             else{
-                $(".post-thumbnails").css("width","25%");
-                $(".post-thumbnails").css("display","inline-block"); 
+                $(".post-thumbnails").each(function(){
+                    console.log($(this).height());
+                    if($(this).height() <= 400){
+                      $(this).css("width","25%");
+                      $(this).css("display","inline-block");
+                    }
+                });
             }
         }
 
