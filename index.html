@@ -24,6 +24,9 @@
   <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>  
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
 
   <title>Single Page Application Test</title>
   <style>
@@ -247,10 +250,6 @@
       margin-left: 5px;
     }
 
-    .loader-container-thumbnail{
-      position: relative;      
-    }
-
     .loader-container{
       position: absolute;
       width: 100%;
@@ -268,6 +267,22 @@
       height:50px;
       animation: spin 1s linear infinite;
     }
+
+    .loader-container-thumbnail{
+      position: relative;
+      text-align:center      
+    }
+
+    .loader-thumbnail{
+      display: inline-block;
+      border: 10px solid #f3f3f3;
+      border-top: 10px solid wheat;
+      border-radius: 50%;
+      width:50px;
+      height:50px;
+      animation: spin 1s linear infinite;
+    }
+
     @keyframes spin {
       0%{ transform: rotate(0deg);}
       100%{ transform: rotate(360deg);}
@@ -299,6 +314,7 @@
     .post-wrapper{
     	background-color: wheat;
     	padding-bottom: 20px;
+      perspective: 100px;
     }
 
     .fetched-post {
@@ -329,19 +345,20 @@
   		box-shadow: 5px 5px 5px grey;  
     	width: 25%;
     	height: 400px;
-      transition: width 0.2s;
+      min-height:400px;
+      transition: width 0.2s ease-in;
+      transition: height 0.2s ease-in;
+      perspective: 1000px
     }
-
-
 
     .post-title {
       font-family: 'Raleway', serif;
       text-align: center;
     }
-    .main-heading{
 
-	  border-bottom-left-radius: 50% 20%;
-	  border-bottom-right-radius: 50% 20%;
+    .main-heading{
+  	  border-bottom-left-radius: 50% 20%;
+  	  border-bottom-right-radius: 50% 20%;
       font-family: 'Raleway', serif !important;
       padding: 20px;
       padding-top: 40px;
@@ -459,6 +476,7 @@
 
   </style>
 </head>
+
 <body>
 
   <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
@@ -474,7 +492,7 @@
       }
       else{
         $(".post-thumbnails").css("width","25%");
-        $(".post-thumbnails").css("display","inline-block");
+        $(".post-thumbnails").css("display","inline-block"); 
       }
     }
 
@@ -492,17 +510,26 @@
     $(window).ready(resizePostThumbs);
 
     function expandPost(containerId, postId){
-      /* expands and hides the post thumbnail*/
+      /* expands the post thumbnail*/
       if($("#" + postId).height() <= 280){
+        $("#" + containerId).css("background-color","white");
         $("#" + containerId).css("width","100%");
         $("#" + containerId).css("height","100%");
         $("#" + postId).css("height","100%");
         $("#" + containerId).focus();
         $("#" + postId).focus();
       } else{
-        $("#" + containerId).css("width","25%");
-        $("#" + containerId).css("height","400px");
-        $("#" + postId).css("height","280px");      
+        /* hides the post thumbnail*/
+        $("#" + postId).css("height","280px");  
+        $("#" + containerId).css("height","400px");  
+        if($(window).width() < 750 ){
+            $("#" + containerId).css("width","100%");
+            $("#" + containerId).css("display","block");
+        }
+        else{
+          $("#" + containerId).css("width","25%");
+          $("#" + containerId).css("display","inline-block"); 
+        }
       }
     }
 
@@ -578,6 +605,7 @@
       }
       
       componentDidMount(){
+      {/* current stylings fitted for 4 posts previews */}
         let apiURL = 'https://jpoblog.herokuapp.com/posts?type=json&count=4';
         fetch(apiURL)
           .then((response) => {
@@ -592,6 +620,16 @@
 
       componentDidUpdate(prevProps, prevState){
         resizePostThumbs();
+        $(".post-thumbnails").bind('mouseenter', (e)=> {
+          if($(e.currentTarget).height() <= 400){
+            $(e.currentTarget).css("background-color","lightyellow");
+          }
+        });
+        $(".post-thumbnails").bind('mouseleave', (e)=> {
+          if($(e.currentTarget).height() <= 400){
+            $(e.currentTarget).css("background-color","white");
+          }
+        });
       }
 
       render(){
@@ -611,11 +649,14 @@
         						    htmlObj={
         						      __html:postHTML
         						    };
+
                         let containerId = 'thumb' + post.id;
                         let postId = 'para' + post.id
+
         						    return(
         					      	<div className="post-thumbnails post-anim" id={containerId} key={post.id}>
-                              <p onClick={function(){expandPost(containerId, postId)}}>>></p>
+                              {/* expands the post thumbnail on clicking the expand icon*/}
+                              <i onClick={function(){expandPost(containerId, postId)}} className="fas fa-expand"></i>
         					            <h1 className="post-title">{post.title}</h1>
         					            <div id={postId} className="post-paragraph" dangerouslySetInnerHTML={htmlObj}></div>
         					        </div>             
@@ -623,14 +664,14 @@
         						  })} 
     			        </div>
                 </div>
-              </div>          
+              </div>           
           </div>
           );       
         }
         else{
           return(
             <div className='loader-container-thumbnail'>
-             <div className='loader'></div>
+             <div className='loader-thumbnail'></div>
             </div>
           ); 
         }
@@ -668,7 +709,6 @@
           let fetchTop = this.props.fetchTop;
           return(
             <div className="post-wrapper">
-            	<TriangleRow/>
              {this.state.posts.map(function(post){
                 var mdConverter = new showdown.Converter(),
                 postText=post.body,
@@ -772,6 +812,7 @@
         );
       };
     }
+
     class Blog extends React.Component{
       componentDidMount(){
         document.getElementById('root').focus();
@@ -784,6 +825,7 @@
         );
       }
     }
+
     class ProfileHeader extends React.Component {
       render(){
         return(
@@ -797,6 +839,7 @@
         );        
       }
     }
+
     class Home extends React.Component {
       componentDidMount(){
         document.getElementById('root').focus();
