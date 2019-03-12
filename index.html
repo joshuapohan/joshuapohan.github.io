@@ -365,9 +365,9 @@
             width: 25%;
             height: 400px;
             min-height:400px;
-            transition: width 0.2s ease-in;
-            transition: height 0.2s ease-in;
+            transition: 0.1s ease-in !important; 
             perspective: 1000px
+            max-height:2000px; /** needed for transition */
         }
 
         .post-title {
@@ -535,10 +535,14 @@
         function expandPost(containerId, postId){
             /** expands the post thumbnail*/
             if($("#" + postId).height() <= 280){
+
                 $("#" + containerId).css("background-color","white");
                 $("#" + containerId).css("width","100%");
-                $("#" + containerId).css("height","100%");
+                $("#" + containerId).css("height", "100%");
                 $("#" + postId).css("height","100%");
+                //let fullHeight = $("#" + postId).height();
+                //console.log(fullHeight);
+                //$("#" + containerId).css("height", fullHeight);
                 $("#" + containerId).focus();
                 $("#" + postId).focus();
             } else{
@@ -554,7 +558,7 @@
                     $("#" + containerId).css("display","inline-block"); 
                 }
             }
-        }
+        } 
     </script>
 
     <script type="text/babel">
@@ -952,6 +956,7 @@
                         </div>
                         <h1 className="main-heading">Latest Posts</h1>
                         <div className="arrow-wrapper">
+                            {/* remove bounce-wrapper class */}
                             <div className="bounce-wrapper">
                                 <div className="scroll-arrow"></div>
                             </div>
