@@ -138,11 +138,8 @@
 
         /** The sticky class is added to the navbar with JS when it reaches its scroll position */
         .sticky {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-            opacity : 0.95;
+            background-color: transparent;
+            border-bottom: 0px;
         }
 
         /** Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
@@ -493,6 +490,10 @@
           color:#FFFFFF;
         }
 
+        .main-header{
+            background-image: https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/bg.jpg;
+        }
+
     </style>
 </head>
 
@@ -822,28 +823,30 @@
                 const collapsed = this.state.collapsed;
                 const menuClass = collapsed ? "navbar-collapse collapse" : "navbar-collapse collapse show";
                 return(
-                    <nav className="navbar navbar-dark navbar-bg" id="navigationbar" role="navigation">
-                            <div className="container">
-                                    <div className="navbar-header">
-                                        <button type="button" onClick={this.toggleNavbar} className="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items" aria-expanded="false">
-                                            <span className="sr-only">Toggle navigation</span>
-                                            <span className="icon-bar"></span>
-                                            <span className="icon-bar"></span>
-                                            <span className="icon-bar"></span>
-                                        </button>
-                                        <a className="navbar-brand" href="#/" id="site-brand">Test SPA</a>
-                                    </div>
-                                    <div className={`${menuClass}`} id="menu-items" aria-expanded="false">
-                                     <ul className='nav navbar-nav header' id="menu-bar">
-                                            <li><NavLink exact to='/'><div onClick={this.resetNavBar}>Home</div></NavLink></li>
-                                            <li><NavLink exact to='/blog'><div onClick={this.resetNavBar}>Blog</div></NavLink></li>
-                                            {/**<li><NavLink exact to='/skills'><div onClick={this.resetNavBar}>Skills</div></NavLink></li>
-                                            <li><NavLink exact to='/interests'><div onClick={this.resetNavBar}>Interests</div></NavLink></li>
-                                            <li><a href="javascript:void(0)" onClick={openNav}>Open</a></li>*/}
-                                        </ul>
-                                    </div>
-                            </div>
-                    </nav>
+                    <div>
+                        <nav className="navbar navbar-dark navbar-bg navbar-fixed-top" id="navigationbar" role="navigation">
+                                <div className="container">
+                                        <div className="navbar-header">
+                                            <button type="button" onClick={this.toggleNavbar} className="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items" aria-expanded="false">
+                                                <span className="sr-only">Toggle navigation</span>
+                                                <span className="icon-bar"></span>
+                                                <span className="icon-bar"></span>
+                                                <span className="icon-bar"></span>
+                                            </button>
+                                            <a className="navbar-brand" href="#/" id="site-brand">Test SPA</a>
+                                        </div>
+                                        <div className={`${menuClass}`} id="menu-items" aria-expanded="false">
+                                         <ul className='nav navbar-nav header' id="menu-bar">
+                                                <li><NavLink exact to='/'><div onClick={this.resetNavBar}>Home</div></NavLink></li>
+                                                <li><NavLink exact to='/blog'><div onClick={this.resetNavBar}>Blog</div></NavLink></li>
+                                                {/**<li><NavLink exact to='/skills'><div onClick={this.resetNavBar}>Skills</div></NavLink></li>
+                                                <li><NavLink exact to='/interests'><div onClick={this.resetNavBar}>Interests</div></NavLink></li>
+                                                <li><a href="javascript:void(0)" onClick={openNav}>Open</a></li>*/}
+                                            </ul>
+                                        </div>
+                                </div>
+                        </nav>
+                    </div>
                 );
             };
         }
@@ -867,7 +870,7 @@
 
             render(){
                 return(
-                    <div>
+                    <div className="main-header">
                       <div className='jumbotron'>
                           <h1 className='main-text'>Test</h1> <h1 className='third-text'>Jumbotron</h1><br></br>
                           <p> Using bootstrap jumbotron</p>
@@ -1068,9 +1071,9 @@
             var sticky = navbar.clientHeight - 20;
             // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
             if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
+                navbar.classList.remove("sticky")
             } else {
-                navbar.classList.remove("sticky");
+                navbar.classList.add("sticky");
             }
         };
 
