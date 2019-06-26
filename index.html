@@ -29,12 +29,13 @@
     <title>Single Page Application Test</title>
     <style>
         body {
-            background-color: #223052;
+            background-color: darkcyan;
             margin: 0;
+            font-family: 'Raleway', sans-serif;
         }
 
         .footer{
-            background-color: #223052;
+            background-color: darkcyan;
             display: block;
             height: 50px;
         }
@@ -61,7 +62,7 @@
         }
 
         .content {
-            background-color: #223052;
+            background-color: darkcyan;
         }
 
         .content h2 {
@@ -73,19 +74,36 @@
             margin-bottom: 10px;
         }
 
-        .test {
-            color: #000;
-            background-color: #0099FF;
-        }
-
         .navbar{
+            padding: 5px;
             margin-bottom: 0px;
             border-radius: 0px;
+            font-size: 20px;
+            transition: font-size .1s , padding .3s, background-color 500ms linear, border-bottom 800ms linear;
         }
 
-        .navbar-bg{
-                background-color:#223052;
-                border-bottom: 8px solid #1e2b49;
+        .navbar-bg {
+            background-color: darkcyan;
+            box-shadow:0 7px 16px 0 rgba(50, 50, 50, 0.1);
+        }
+
+        @media (min-width: 768px){
+            .navbar-bg{
+                    background-color:transparent;
+                    box-shadow: none;
+                    padding-bottom: 15px;
+            }
+            /** The sticky class is added to the navbar with JS when it reaches its scroll position */
+            .sticky {
+                    background-color: darkcyan;
+                    box-shadow:0 7px 16px 0 rgba(50, 50, 50, 0.1);
+                    padding-bottom: 5px;
+                    font-size: 18px;
+                }
+    
+            .sticky .navbar-brand{
+                font-size: 22px !important;
+            }
         }
 
         .navbar-brand, navbar-brand > a:hover{
@@ -97,6 +115,7 @@
         .navbar-brand{
             text-decoration: none !important;
             color:white;
+            font-size: 24px;
         }
 
         .navbar-toggle .icon-bar{ 
@@ -105,9 +124,10 @@
 
         .navbar .nav > li > a:focus,
         .navbar .nav > li > a:hover {
-            color: #223052 !important;
+            color: darkcyan !important;
             text-decoration: none;
-            background-color: wheat;
+            background-color: snow;
+            border-radius: 3px;
         }
 
         .navbar-nav {
@@ -127,19 +147,13 @@
         }
 
         #menu-items.show > ul {
-            background-color:rgba(35, 48, 83, 0.95);
+            background-color:darkcyan;
             width: 100%;
         }
 
         #menu-items.show > ul > li > a {
             display: block;
             text-align:center;
-        }
-
-        /** The sticky class is added to the navbar with JS when it reaches its scroll position */
-        .sticky {
-            background-color: transparent;
-            border-bottom: 0px;
         }
 
         /** Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
@@ -149,7 +163,7 @@
         /**to remove the blue border when the div is focused on*/
         #root{
             outline-width: 0;
-            background-color: #223052;
+            background-color: darkcyan;
         }
         #site-brand:hover{
             color:white !important;
@@ -250,11 +264,13 @@
         }
         .jumbotron {
             margin-bottom: 0px;
-            background-color: #223052;
+            background-color: darkcyan;
             /**background-image: url("https://github.com/senel34/node-test-deploy/blob/master/bg.jpg?raw=true");*/
             background-size: cover;
             color: #fff;
             text-align: center;
+            min-height: 600px;
+            align-items: center;
         }
         .jumbotron p{
             display: inline-block;
@@ -264,6 +280,11 @@
             display: inline-block;
             text-align: center;
             margin-left: 5px;
+        }
+
+        .jumbotron h1{
+            font-size: 50px;
+            font-weight: 700;
         }
 
         .loader-container{
@@ -277,7 +298,7 @@
             left:50%;
             top:50%;
             border: 10px solid #f3f3f3;
-            border-top: 10px solid wheat;
+            border-top: 10px solid snow;
             border-radius: 50%;
             width:50px;
             height:50px;
@@ -292,7 +313,7 @@
         .loader-thumbnail{
             display: inline-block;
             border: 10px solid #f3f3f3;
-            border-top: 10px solid wheat;
+            border-top: 10px solid snow;
             border-radius: 50%;
             width:50px;
             height:50px;
@@ -311,11 +332,11 @@
         }
         .third-text{
             display: inline-block;
-            color:wheat !important;
+            color:darkcyan !important;
         }
         .main-content{
             padding-left: 50px;
-            background-color: wheat;
+            background-color: snow;
             padding-bottom: 50px;
             padding-right: 0px;
             width: 100%;
@@ -328,7 +349,7 @@
         }
 
         .post-wrapper{
-          background-color: wheat;
+          background-color: snow;
           padding-bottom: 20px;
             perspective: 100px;
         }
@@ -378,8 +399,8 @@
             font-family: 'Raleway', serif !important;
             padding: 20px;
             padding-top: 40px;
-            background-color: #223052;
-            color: wheat !important;
+            background-color: darkcyan;
+            color: snow !important;
             font-family: inherit;
             margin: 0px;
             font-weight: bold;
@@ -428,7 +449,7 @@
             display: block;
             width: 20px;
             height: 20px;
-            border: 4px solid wheat;
+            border: 4px solid snow;
             border-width: 0px 0px 4px 4px;
             transform: rotate(-45deg);
             margin: auto;
@@ -442,7 +463,7 @@
             left: 5px;
             width: 20px;
             height: 20px;
-            border: 4px solid wheat;
+            border: 4px solid snow;
             border-width: 0px 0px 4px 4px;
         }
 
@@ -453,7 +474,7 @@
         .arrow-wrapper{
             text-align:center;
             margin: auto;
-            background-color: #223052;
+            background-color: darkcyan;
             padding-bottom: 40px;
         }
         
@@ -472,17 +493,17 @@
            bottom: 0;
            border-left: 25px solid transparent;
            border-right: 25px solid transparent;
-           border-bottom: 25px solid #223052;
-  }
+           border-bottom: 25px solid darkcyan;
+        }
 
-        .triangle-wheat {
+        .triangle-snow {
             display: inline;
             width: 0; 
             height: 0;
             bottom: 0;
             border-left: 25px solid transparent;
             border-right: 25px solid transparent;
-            border-bottom: 25px solid wheat;
+            border-bottom: 25px solid snow;
         }
 
         .copyright-text{
@@ -490,8 +511,34 @@
           color:#FFFFFF;
         }
 
-        .main-header{
-            background-image: https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/bg.jpg;
+        .jumbotron{
+            background-image: url(https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% -50px;
+            position:relative;
+        }
+
+        .navbar-nav > li > a > .active{
+            border-radius: 3px;
+        }
+
+        .btn-primary{
+            background-color: darkcyan;
+            border-color: #007777;
+        }
+
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background-color: #007777;
+        }
+
+        .center-div{
+            text-align: center;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
         }
 
     </style>
@@ -500,7 +547,83 @@
 <body>
     <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
     <script type="text/javascript">
+
+
+        /*
+        Plugin: jQuery Parallax
+        Version 1.1.3
+        Author: Ian Lunn
+        Twitter: @IanLunn
+        Author URL: http://www.ianlunn.co.uk/
+        Plugin URL: http://www.ianlunn.co.uk/plugins/jquery-parallax/
         
+        Dual licensed under the MIT and GPL licenses:
+        http://www.opensource.org/licenses/mit-license.php
+        http://www.gnu.org/licenses/gpl.html
+        */
+        
+        (function( $ ){
+            var $window = $(window);
+            var windowHeight = $window.height();
+        
+            $window.resize(function () {
+                windowHeight = $window.height();
+                console.log("window resized");
+            });
+        
+            $.fn.parallax = function(xpos, speedFactor, outerHeight) {
+                var $this = $(this);
+                var getHeight;
+                var firstTop;
+                var paddingTop = 0;
+                
+                //get the starting position of each element to have parallax applied to it      
+                $this.each(function(){
+                    firstTop = $this.offset().top;
+                });
+        
+                if (outerHeight) {
+                    getHeight = function(jqo) {
+                        return jqo.outerHeight(true);
+                    };
+                } else {
+                    getHeight = function(jqo) {
+                        return jqo.height();
+                    };
+                }
+                    
+                // setup defaults if arguments aren't specified
+                if (arguments.length < 1 || xpos === null) xpos = "50%";
+                if (arguments.length < 2 || speedFactor === null) speedFactor = 0.1;
+                if (arguments.length < 3 || outerHeight === null) outerHeight = true;
+                
+                // function to be called whenever the window is scrolled or resized
+                function update(){
+                    var pos = $window.scrollTop();              
+        
+                    $this.each(function(){
+                        var $element = $(this);
+                        var top = $element.offset().top;
+                        var height = getHeight($element);
+        
+                        // Check if totally above or totally below viewport
+                        if (top + height < pos || top > pos + windowHeight) {
+                            return;
+                        }
+        
+                        $this.css('backgroundPosition', xpos + " " + Math.round((firstTop - pos) * speedFactor) + "px");
+                    });
+                }       
+        
+                $window.bind('scroll', update).resize(update);
+                update();
+            };
+        })(jQuery);
+
+        $(document).ready(function(){
+            $('.jumbotron').parallax("50%", 0.3);
+        });
+
         let resizeId;
 
         function resizePostThumbs(){
@@ -511,7 +634,6 @@
             }
             else{
                 $(".post-thumbnails").each(function(){
-                    console.log($(this).height());
                     if($(this).height() <= 400){
                       $(this).css("width","25%");
                       $(this).css("display","inline-block");
@@ -579,43 +701,43 @@
                 return(
                     <div className="triangle-container">
                         <div className="triangle-triangle-container">
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
-                            <div className="triangle-wheat"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
+                            <div className="triangle-snow"></div>
                         </div>
                   </div>
                 );
@@ -871,11 +993,13 @@
             render(){
                 return(
                     <div className="main-header">
-                      <div className='jumbotron'>
-                          <h1 className='main-text'>Test</h1> <h1 className='third-text'>Jumbotron</h1><br></br>
-                          <p> Using bootstrap jumbotron</p>
-                          <a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>
-                      </div>
+                        <div className="jumbotron">
+                            <div className="center-div">
+                                <h1 className='main-text'>Joshua</h1> <h1 className="third-text">Pohan</h1><br></br>
+                                <p> Using bootstrap jumbotron</p>
+                                {/**<a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>*/}
+                            </div>
+                        </div>
                     </div>
                 );                
             }
@@ -1071,9 +1195,9 @@
             var sticky = navbar.clientHeight - 20;
             // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
             if (window.pageYOffset >= sticky) {
-                navbar.classList.remove("sticky")
+                navbar.classList.add("sticky")
             } else {
-                navbar.classList.add("sticky");
+                navbar.classList.remove("sticky");
             }
         };
 
