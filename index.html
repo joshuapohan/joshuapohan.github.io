@@ -163,6 +163,7 @@
         .sticky + .content {
             padding-top: 100px;
         }
+
         /**to remove the blue border when the div is focused on*/
         #root{
             outline-width: 0;
@@ -178,22 +179,26 @@
             padding-left: 5px;
         }
         .profile-text {
-                font-family: 'Merriweather', serif;
+                font-family: 'Merriweather', serif
+                max-height: 400px;;
         }
+
         .avatar-container{
             margin-top: 5%;
             position: relative;
-            width: 40%;
-            min-width: 90px;
+            min-width: 300px;
+            max-width: 400px;
+            display:inline-block
         }
+
         .avatar {
             display:block;
-            padding-top:100%;
             border-radius: 50%;
             border: 2px solid black;
             /** background-color: #333; */
-            background-image: url(https://github.com/senel34/node-test-deploy/blob/master/pp.jpg?raw=true);
+            background-image: url(https://drive.google.com/uc?export=view&id=1Pka0jpTer4pfngVCgS33su-cAcTGmIQq);
             background-size: 100%;
+            padding-bottom: 100%;
         }
         .sidenav {
                 height: 100%; /** 100% Full-height */
@@ -332,6 +337,18 @@
             display: inline-block;
             color:#ffffff !important;
         }
+        .main-text:before{
+            content: "[";
+            color: darkcyan;
+            line-height: 20px;
+            font-size: 60px;
+        }
+        .main-text:after{
+            content: "]";
+            color: darkcyan;
+            line-height: 20px;
+            font-size: 60px;
+        }
         .second-text{
         }
         .third-text{
@@ -339,10 +356,8 @@
             color:darkcyan !important;
         }
         .main-content{
-            padding-left: 50px;
             background-color: snow;
             padding-bottom: 50px;
-            padding-right: 0px;
             width: 100%;
             margin: 0px;
         }
@@ -500,16 +515,6 @@
            border-bottom: 25px solid darkcyan;
         }
 
-        .triangle-snow {
-            display: inline;
-            width: 0; 
-            height: 0;
-            bottom: 0;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-bottom: 25px solid snow;
-        }
-
         .copyright-text{
           text-align:center;
           color:#FFFFFF;
@@ -543,6 +548,10 @@
             left: 50%;
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
+        }
+
+        .center-horizontal-div{
+            text-align: center;
         }
 
     </style>
@@ -628,6 +637,11 @@
             $('.jumbotron').parallax("50%", 0.3);
         });
 
+
+        /**
+
+        */
+
         let resizeId;
 
         function resizePostThumbs(){
@@ -705,43 +719,43 @@
                 return(
                     <div className="triangle-container">
                         <div className="triangle-triangle-container">
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
-                            <div className="triangle-snow"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
+                            <div className="triangle"></div>
                         </div>
                   </div>
                 );
@@ -1000,7 +1014,7 @@
                         <div className="jumbotron">
                             <div className="center-div">
                                 <h1 className='main-text'>Joshua Pohan</h1> <br></br>
-                                <p> Using bootstrap jumbotron</p>
+                                <p>Coder.Developer</p>
                                 {/**<a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>*/}
                             </div>
                         </div>
@@ -1019,13 +1033,14 @@
                 <ProfileHeader />
                     <div className='container main-content'>
                         <div className='row'>
-                            <div className="col-xs-0 col-sm-0"/>
-                            <div className="col-xs-8 col-sm-8">
-                                <h1 className='profile-title'>Insert Profile Name Here</h1>
-                                <p className='profile-text'>Insert title here?<br/><br/>Here is another line
-                                <br/>supposed to contain some kind of information
-                                <br/>But I'll just add lorem ipsum
-                                <br/> <br/>Supposedly knows: 
+                            <div className="col-sm-2"/>
+                            <div className="col-xs-12 col-sm-4">
+                                <h1 className='profile-title'>About Joshua</h1>
+                                <br/>
+                                <p>
+                                    Joshua is a graduate from Universitas Indonesia, majoring in Electrical Engineering with GPA of 3.48 / 4.00. Joshua specialized in Control Engineering. As a graduate in Electrical Engineering, He studied about Digital Control Systems, Algorithm and Programming, Mechatronics, Electric Power Engineering, Power Quality and other related subjects.
+                                    <br/><br/>His experience in working in the electrical engineering field includes a one-month practical work at PT Chevron Pacific Indonesia at the SCADA and i-field division. He was an engineer at Honeywell Aerospace wo between 2016 and 2017. As a test engineer, he works with RF equipment, radios, and automated testers. He is currently working at PT Oberthur Technologies Indonesia as a software developer.
+                                    <br/><br/>He also received an opportunity to study at Lentera Angin Nusantara for Universitas Indonesia Electric Car Research Group Project where he learned how to use AutoCAD and Solidworks.During his work as a laboratory assistant he worked with an OMRON PLC.
                                 </p>
                                 <ul className='profile-text'>
                                      <li>Python</li>
@@ -1033,71 +1048,32 @@
                                      <li>Flask</li>
                                 </ul>
                             </div>
-                            <div className="col-xs-4 col-sm-4">
+                            <div className="col-xs-12 col-sm-4">
                                 <br/>
-                                <div className="avatar-container">
-                                    <div className='avatar'></div>
+                                <div className="center-horizontal-div">
+                                    <div className="avatar-container">
+                                        <div className='avatar'></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="col-sm-2"/>
                         </div>
                     </div>
-                        <div className="triangle-container">
-                          <div className="triangle-triangle-container">
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                          </div>
+                    <TriangleRow/>
+                    <h1 className="main-heading">Latest Posts</h1>
+                    <div className="arrow-wrapper">
+                        {/* remove bounce-wrapper class */}
+                        <div className="bounce-wrapper">
+                            <div className="scroll-arrow"></div>
                         </div>
-                        <h1 className="main-heading">Latest Posts</h1>
-                        <div className="arrow-wrapper">
-                            {/* remove bounce-wrapper class */}
-                            <div className="bounce-wrapper">
-                                <div className="scroll-arrow"></div>
-                            </div>
+                    </div>
+                    <PostThumbs/>
+                    {/**<Post fetchTop={true}/>*/}
+                    <div className="footer">
+                        <div className="copyright-text">
+                            <p>Joshua Pohan 2019</p>
                         </div>
-                        <PostThumbs/>
-                        {/**<Post fetchTop={true}/>*/}
-                        <div className="footer">
-                          <div className="copyright-text">
-                          </div>
-                        </div>
+                    </div>
                 </div>
                 );
             }
