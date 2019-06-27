@@ -104,6 +104,11 @@
             .sticky .navbar-brand{
                 font-size: 22px !important;
             }
+
+            .jumbotron{
+                min-height: 400px !important;
+                margin-top: 0px !important;
+            }
         }
 
         .navbar-brand, navbar-brand > a:hover{
@@ -139,7 +144,6 @@
         }
 
         #menu-items.show > #menu-bar{
-            position: fixed;     
             z-index: 11;
             flex-direction: column;
             border-bottom-left-radius:2%;
@@ -148,7 +152,6 @@
 
         #menu-items.show > ul {
             background-color:darkcyan;
-            width: 100%;
         }
 
         #menu-items.show > ul > li > a {
@@ -269,8 +272,9 @@
             background-size: cover;
             color: #fff;
             text-align: center;
-            min-height: 600px;
+            min-height: 300px;
             align-items: center;
+            margin-top: 50px;
         }
         .jumbotron p{
             display: inline-block;
@@ -955,7 +959,7 @@
                                                 <span className="icon-bar"></span>
                                                 <span className="icon-bar"></span>
                                             </button>
-                                            <a className="navbar-brand" href="#/" id="site-brand">Test SPA</a>
+                                            <a className="navbar-brand" href="#/" id="site-brand">Joshua Pohan</a>
                                         </div>
                                         <div className={`${menuClass}`} id="menu-items" aria-expanded="false">
                                          <ul className='nav navbar-nav header' id="menu-bar">
@@ -995,7 +999,7 @@
                     <div className="main-header">
                         <div className="jumbotron">
                             <div className="center-div">
-                                <h1 className='main-text'>Joshua</h1> <h1 className="third-text">Pohan</h1><br></br>
+                                <h1 className='main-text'>Joshua Pohan</h1> <br></br>
                                 <p> Using bootstrap jumbotron</p>
                                 {/**<a href='https://jpoblog.herokuapp.com' className="btn btn-primary" target="_blank">Visit Blog</a>*/}
                             </div>
