@@ -16,6 +16,9 @@
     <script src="https://unpkg.com/react-router-dom@4.0.0/umd/react-router-dom.min.js"></script>
     <!-- SHOWDOWN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.7/showdown.min.js"></script>
+    <!-- jQuery easing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.compatibility.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <!-- BOOTSTRAP -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -145,6 +148,7 @@
             text-decoration: none !important;
             color:white;
             font-family: 'Raleway', serif;
+            cursor: pointer;
         }
 
         .navbar-brand{
@@ -558,6 +562,18 @@
     <div id="root" tabindex="0" class='content'>React has not rendered yet</div>
     <script type="text/javascript">
 
+        $(function() {
+            $('a.page-scroll').bind('click', function(event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1500, 'easeInOutExpo');
+                if($(window).scrollTop() === 0){
+                    event.preventDefault();
+                }
+            });
+        });
+
 
         /*
         Plugin: jQuery Parallax
@@ -578,7 +594,6 @@
         
             $window.resize(function () {
                 windowHeight = $window.height();
-                console.log("window resized");
             });
         
             $.fn.parallax = function(xpos, speedFactor, outerHeight) {
@@ -945,6 +960,7 @@
             }
             resetNavBar(){
                 document.getElementById('root').focus();
+                window.scrollTo(0,0);
                 this.setState({
                     collapsed: true
                 });
@@ -971,12 +987,9 @@
                                             <a className="navbar-brand" href="#/" id="site-brand">Joshua Pohan</a>
                                         </div>
                                         <div className={`${menuClass}`} id="menu-items" aria-expanded="false">
-                                         <ul className='nav navbar-nav header' id="menu-bar">
-                                                <li><NavLink exact to='/'><div onClick={this.resetNavBar}>Home</div></NavLink></li>
-                                                <li><NavLink exact to='/blog'><div onClick={this.resetNavBar}>Blog</div></NavLink></li>
-                                                {/**<li><NavLink exact to='/skills'><div onClick={this.resetNavBar}>Skills</div></NavLink></li>
-                                                <li><NavLink exact to='/interests'><div onClick={this.resetNavBar}>Interests</div></NavLink></li>
-                                                <li><a href="javascript:void(0)" onClick={openNav}>Open</a></li>*/}
+                                            <ul className='nav navbar-nav navbar-right header' id="menu-bar">
+                                                <li><a className="page-scroll" href="#about" onClick={this.resetNavBar}>About</a></li>
+                                                <li><a className="page-scroll" href="#latest" onClick={this.resetNavBar}>Posts</a></li>
                                             </ul>
                                         </div>
                                 </div>
@@ -991,6 +1004,7 @@
 
             componentDidMount(){
                 document.getElementById('root').focus();
+                window.scrollTo(0,0)
             }
             render(){
                 return(
@@ -1022,6 +1036,7 @@
         class Home extends React.Component {
             componentDidMount(){
                 document.getElementById('root').focus();
+                window.scrollTo(0,0);
             }
             render(){
                 return(
@@ -1082,6 +1097,7 @@
         class Skills extends React.Component {
             componentDidMount(){
                 document.getElementById('root').focus();
+                window.scrollTo(0,0);
             }
             render(){
                 return(
@@ -1125,12 +1141,7 @@
             }
             render(){
                 return(
-                    <Switch>
-                        <Route exact path='/' component={Home}/>
-                        <Route exact path='/blog' component={Blog}/>
-                        {/**<Route path='/skills' component={Skills}/>
-                        <Route path='/interests' component={Interests}/> */}
-                    </Switch>
+                    <Home/>
                 );
             }
         }
@@ -1161,9 +1172,7 @@
 
         ReactDOM.render(
             (
-                <HashRouter>
-                    <App />
-                </HashRouter>
+                <App />
             ), document.getElementById('root')
         );
         
