@@ -247,17 +247,38 @@
             background-color: white;
             border-radius: 15px;
         }
-
         .project {
             display:block;
             border-radius: 50%;
             border: 2px solid black;
             background-size: 100%;
             padding-bottom: 100%;
+            position: relative;
+            z-index: 2;
         }
-
-        .p1{
-            background-image: url(https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/p1.png?_sm_au_=iVVVG3FLksFkWk2N);
+        .project-link{
+            position: absolute;
+            left: 43%;
+            top: 50%;
+            display: none !important;
+            transition: visibility 0s, opacity 0.5s linear;
+        }
+        .project:hover > .project-link{
+            display: block !important;
+            z-index: 3;
+            transition: visibility 0s, opacity 0.5s linear;
+        }
+        .project:hover > .content-background{
+            position: absolute;
+            display: block;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            transition: visibility 0s, opacity 0.5s linear;           
         }
 
         .sidenav {
@@ -1062,18 +1083,21 @@
                 );                
             }
         }
+
         const Project = (props) =>{
             return(
                 <div className="inline-block">
                     <div className="project-container">
-                        <div className='project' style={{backgroundImage: "url("+props.bg+")"}}/>
+                        <div className='project' style={{backgroundImage: "url("+props.bg+")"}}>
+                            <a className="project-link btn btn-info" target="_blank" href={props.url}>View</a>
+                            <span className="content-background"></span>
+                        </div>
                         <h1>{props.title}</h1>
                         <p>{props.description}</p>
                     </div>
                 </div>
             );
         }
-
         Project.defaultProps = {
             title: "Project",
             description: "Project description blablablalbla"
@@ -1087,8 +1111,8 @@
                             <div className='row'>
                                 <div className="col-xs-12 ">
                                     <h1><b>Projects</b></h1>
-                                    <Project bg="https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/p1.png?_sm_au_=iVVVG3FLksFkWk2N" title="React Podomoro" description="Podomoro timer implemented in React using React, Redux, React-redux with customizable long break"/>
-                                    <Project title="Blog" description="Blog implemented using python flask backend, postgres, flask templating"/>                                   
+                                    <Project url="https://github.com/joshuapohan" bg="https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/p1.png?_sm_au_=iVVVG3FLksFkWk2N" title="React Podomoro" description="Podomoro timer implemented in React using React, Redux, React-redux with customizable long break"/>
+                                    <Project url="https://github.com/joshuapohan" bg ="https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/p2.png?_sm_au_=iVVJMz3S1DV7zS2M" title="Blog" description="Blog implemented using python flask backend, postgres, flask templating"/>                                   
                                 </div>
                             </div>
                         </div>                    
@@ -1113,8 +1137,8 @@
                                 <h1 className='profile-title'>About Joshua</h1>
                                 <br/>
                                 <p>
-                                    Joshua is a graduate from Universitas Indonesia, majoring in Electrical Engineering with GPA of 3.48 / 4.00. Joshua specialized in Control Engineering. As a graduate in Electrical Engineering, He studied about Digital Control Systems, Algorithm and Programming, Mechatronics, Electric Power Engineering, Power Quality and other related subjects.
-                                    <br/><br/>His experience in working in the electrical engineering field includes a one-month practical work at PT Chevron Pacific Indonesia at the SCADA and i-field division. He was an engineer at Honeywell Aerospace between 2016 and 2017. As a test engineer, he worked with RF equipment, radios, and automated testers. He is currently working at PT Oberthur Technologies Indonesia as a software developer.
+                                    Joshua graduated from Universitas Indonesia, majored in Electrical Engineering with GPA of 3.48 / 4.00. Joshua specialized in Control Engineering. As a graduate in Electrical Engineering, he studied about Digital Control Systems, Algorithm and Programming, Mechatronics, Electric Power Engineering, Power Quality and other related subjects.
+                                    <br/><br/>His experience of working in the electrical engineering field includes a one-month practical work at PT Chevron Pacific Indonesia at the SCADA and i-field division. He was an engineer at Honeywell Aerospace between 2016 and 2017. As a test engineer, he worked on RF equipment, radios, and automated testers. He is currently working at PT Oberthur Technologies Indonesia as a software developer.
                                     <br/><br/>He also received an opportunity to study at Lentera Angin Nusantara for Universitas Indonesia Electric Car Research Group Project where he learned how to use AutoCAD and Solidworks.During his work as a laboratory assistant he worked with an OMRON PLC.
                                 </p>
                                 <h3>Has worked with : </h3>
