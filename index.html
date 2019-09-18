@@ -236,7 +236,6 @@
         }
 
         .project-container{
-            padding: 15px;
             margin-top: 5%;
             margin-left: 10px;
             margin-right: 10px;
@@ -248,37 +247,16 @@
             border-radius: 15px;
         }
         .project {
+            border-top-left-radius:15px;
+            border-top-right-radius: 15px;
             display:block;
-            border-radius: 50%;
-            border: 2px solid black;
             background-size: 100%;
             padding-bottom: 100%;
             position: relative;
             z-index: 2;
         }
-        .project-link{
-            position: absolute;
-            left: 43%;
-            top: 50%;
-            display: none !important;
-            transition: visibility 0s, opacity 0.5s linear;
-        }
-        .project:hover > .project-link{
-            display: block !important;
-            z-index: 3;
-            transition: visibility 0s, opacity 0.5s linear;
-        }
-        .project:hover > .content-background{
-            position: absolute;
-            display: block;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.6);
-            transition: visibility 0s, opacity 0.5s linear;           
+        .project-button{
+            margin-bottom: 10px;
         }
 
         .sidenav {
@@ -1089,11 +1067,12 @@
                 <div className="inline-block">
                     <div className="project-container">
                         <div className='project' style={{backgroundImage: "url("+props.bg+")"}}>
-                            <a className="project-link btn btn-info" target="_blank" href={props.url}>View</a>
-                            <span className="content-background"></span>
                         </div>
                         <h1>{props.title}</h1>
                         <p>{props.description}</p>
+                        <div style={{"textAlign":"left", "marginLeft":"10px"}}>
+                            <a className=" project-button btn btn-primary" target="_blank" href={props.url}>View Site / Repo</a>
+                        </div>
                     </div>
                 </div>
             );
@@ -1110,7 +1089,7 @@
                         <div className='container center-horizontal-div'>
                             <div className='row'>
                                 <div className="col-xs-12 ">
-                                    <h1><b>Projects</b></h1>
+                                    <h1 style={{"color":"white"}}><b>Projects</b></h1>
                                     <Project url="https://github.com/joshuapohan" bg="https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/p1.png?_sm_au_=iVVVG3FLksFkWk2N" title="React Podomoro" description="Podomoro timer implemented in React using React, Redux, React-redux with customizable long break"/>
                                     <Project url="https://github.com/joshuapohan" bg ="https://raw.githubusercontent.com/joshuapohan/joshuapohan.github.io/master/p2.png?_sm_au_=iVVJMz3S1DV7zS2M" title="Blog" description="Blog implemented using python flask backend, postgres, flask templating"/>                                   
                                 </div>
@@ -1145,7 +1124,7 @@
                                 <ul className='profile-text'>
                                      <li>Python (Flask, SQLAlchemy, etc)</li>
                                      <li>Java</li>
-                                     <li>C/C++</li>
+                                     <li>C++</li>
                                      <li>Proprietary Object Oriented Programming Language</li>
                                      <li>JS (Node, React, jQuery)</li>
                                      <li>Postgres, SQL Server</li>
