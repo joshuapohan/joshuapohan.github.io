@@ -757,46 +757,16 @@
         class TriangleRow extends React.Component{
             /** Component for row of triangles , currently used under the profile header */
             render(){
+                let triangles = []
+                for(let i = 0; i < 38; i++){
+                    triangles.push(<div key={i} className="triangle"></div>)
+                }
                 return(
                     <div className="triangle-container">
                         <div className="triangle-triangle-container">
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
-                            <div className="triangle"></div>
+                            {triangles.map((element)=>{
+                                return element
+                            })}
                         </div>
                   </div>
                 );
@@ -867,7 +837,7 @@
                                             let postId = 'para' + post.id;
 
                                             return(
-                                                <div className="post-thumbnails post-anim" id={containerId} key={post.id}>
+                                                <div className="post-thumbnails" id={containerId} key={post.id}>
                                                     {/** expands the post thumbnail on clicking the expand icon*/}
                                                     <i onClick={function(){expandPost(containerId, postId)}} className="fas fa-expand"></i>
                                                     <h1 className="post-title">{post.title}</h1>
